@@ -384,154 +384,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Volatile 原理及作用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="何靖">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何靖的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/08/Volatile 原理及作用/" itemprop="url">Volatile 原理及作用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T16:23:21+08:00">
-                2019-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>—— <a href="https://zh.wikipedia.org/zh-cn/Volatile%E5%8F%98%E9%87%8F" target="_blank" rel="noopener">维基百科</a><br>Java也支持volatile关键字，但它被用于其他不同的用途。当volatile用于一个作用域时，Java保证如下：</p>
-<ul>
-<li><strong>（适用于Java所有版本）读和写一个volatile变量有全局的排序</strong>。也就是说每个线程访问一个volatile作用域时会在继续执行之前读取它的当前值，而不是（可能）使用一个缓存的值。(但是并不保证经常读写volatile作用域时读和写的相对顺序，也就是说通常这并不是有用的线程构建)。</li>
-<li><strong>（适用于Java5及其之后的版本）volatile的读和写建立了一个happens-before关系，类似于申请和释放一个互斥锁<a href="https://zh.wikipedia.org/zh-cn/Volatile%E5%8F%98%E9%87%8F#cite_note-8" target="_blank" rel="noopener">[示例]</a></strong>。</li>
-</ul>
-<p>使用volatile会比使用锁更快，但是在一些情况下它不能工作。volatile使用范围在Java5中得到了扩展，特别是双重检查锁定现在能够正确工作<a href="https://www.javamex.com/tutorials/double_checked_locking_fixing.shtml" target="_blank" rel="noopener">[示例]</a>。</p>
-<p>资料 1、<a href="https://zh.wikipedia.org/zh-cn/Volatile%E5%8F%98%E9%87%8F" target="_blank" rel="noopener">维基百科</a><br>资料 2、<a href="https://www.cnblogs.com/dolphin0520/p/3920373.html" target="_blank" rel="noopener">Java并发编程：volatile关键字解析</a><br>资料 3、<a href="https://www.cnblogs.com/ms-grf/p/7249220.html" target="_blank" rel="noopener">Java中缓存的原理</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Git回滚代码到某个commit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -628,173 +480,6 @@
             <h3 id="回退命令："><a href="#回退命令：" class="headerlink" title="回退命令："></a>回退命令：</h3><pre><code>$git reset --hard HEAD^      回退到上个版本  
 $git reset --hard HEAD~3     回退三次提交
 $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强推到远程："><a href="#强推到远程：" class="headerlink" title="强推到远程："></a>强推到远程：</h3><pre><code>$git push origin HEAD --force </code></pre><p><a href="https://www.cnblogs.com/shanyou/p/7907781.html" target="_blank" rel="noopener">相关链接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/JAVA基础(JAVA移位运算符)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="何靖">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何靖的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/08/JAVA基础(JAVA移位运算符)/" itemprop="url">JAVA基础(JAVA移位运算符)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T16:23:21+08:00">
-                2019-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>移位运算符** 就是在二进制的基础上对数字进行平移。按照平移的方向和填充数字的规则分为三种：&lt;&lt;（左移）、&gt;&gt;（带符号右移）和&gt;&gt;&gt;（无符号右移）。<br>　　在移位运算时，byte、short和char类型移位后的结果会变成int类型，对于byte、short、char和int进行移位时，规定实际移动的次数是移动次数和32的余数，也就是移位33次和移位1次得到的结果相同。移动long型的数值时，规定实际移动的次数是移动次数和64的余数，也就是移动66次和移动2次得到的结果相同。
-　　</p>
-<p>###三种移位运算符的移动规则和使用如下所示：</p>
-<blockquote>
-<p><strong>“&lt;&lt;” 运算规则：</strong>按二进制形式把所有的数字向左移动对应的位数，高位移出（舍弃），低位的空位补零。<br><strong>语法格式 ：</strong>需要移位的数字 &lt;&lt; 移位的次数</p>
-</blockquote>
-<p>　　例如： 3 &lt;&lt; 2，则是将数字3左移2位<br>　　计算过程：<br>　　3 &lt;&lt; 2<br>　　首先把3转换为二进制数字0000 0000 0000 0000 0000 0000 0000 0011，然后把该数字高位（左侧）的两个零移出，其他的数字都朝左平移2位，最后在低位（右侧）的两个空位补零。则得到的最终结果是0000 0000 0000 0000 0000 0000 0000 1100，则转换为十进制是12.数学意义：<br>　　在数字没有溢出的前提下，对于正数和负数，左移一位都相当于乘以2的1次方，左移n位就相当于乘以2的n次方。</p>
-<blockquote>
-<p><strong>“&gt;&gt;”运算规则：</strong>按二进制形式把所有的数字向右移动对应巍峨位数，低位移出（舍弃），高位的空位补符号位，即正数补零，负数补1.<br><strong>语法格式：</strong>需要移位的数字 &gt;&gt; 移位的次数</p>
-</blockquote>
-<p>　　例如11 &gt;&gt; 2，则是将数字11右移2位<br>　　计算过程：11的二进制形式为：0000 0000 0000 0000 0000 0000 0000 1011，然后把低位的最后两个数字移出，因为该数字是正数，所以在高位补零。则得到的最终结果是0000 0000 0000 0000 0000 0000 0000 0010.转换为十进制是3.数学意义：右移一位相当于除2，右移n位相当于除以2的n次方。<br>　　&gt;&gt;&gt;运算规则：按二进制形式把所有的数字向右移动对应巍峨位数，低位移出（舍弃），高位的空位补零。对于正数来说和带符号右移相同，对于负数来说不同。<br>　　其他结构和&gt;&gt;相似。</p>
-<p>###小结：<br>　　二进制运算符，包括位运算符和移位运算符，使程序员可以在二进制基础上操作数字，可以更有效的进行运算，并且可以以二进制的形式存储和转换数据，是实现网络协议解析以及加密等算法的基础。<br>　　实例操作：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int i = -1;</span><br><span class="line">        i &gt;&gt;&gt;= 10;</span><br><span class="line">        System.out.println(i);</span><br><span class="line">        mTest();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">public static void mTest() &#123;</span><br><span class="line">        //左移</span><br><span class="line">        int i = 12; //二进制为:0000000000000000000000000001100</span><br><span class="line">        i &lt;&lt;= 2; //i左移2位，把高位的两位数字(左侧开始)抛弃,低位的空位补0,二进制码就为0000000000000000000000000110000</span><br><span class="line">        System.out.println(i); //二进制110000值为48；</span><br><span class="line">        System.out.println(&quot;&lt;br&gt;&quot;);</span><br><span class="line">        //右移</span><br><span class="line">        i &gt;&gt;= 2; //i右移2为，把低位的两个数字(右侧开始)抛弃,高位整数补0，负数补1，二进制码就为0000000000000000000000000001100</span><br><span class="line">        System.out.println(i); //二进制码为1100值为12</span><br><span class="line">        System.out.println(&quot;&lt;br&gt;&quot;);</span><br><span class="line">        //右移example</span><br><span class="line">        int j = 11;//二进制码为00000000000000000000000000001011</span><br><span class="line">        j &gt;&gt;= 2; //右移两位，抛弃最后两位,整数补0,二进制码为：00000000000000000000000000000010</span><br><span class="line">        System.out.println(j); //二进制码为10值为2</span><br><span class="line">        System.out.println(&quot;&lt;br&gt;&quot;);</span><br><span class="line">        byte k = -2; //转为int,二进制码为：0000000000000000000000000000010</span><br><span class="line">        k &gt;&gt;= 2; //右移2位，抛弃最后2位，负数补1,二进制吗为：11000000000000000000000000000</span><br><span class="line">        System.out.println(j); //二进制吗为11值为2</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>　　在Thinking in Java第三章中的一段话:<br>　　移位运算符面向的运算对象也是<br>　　二进制的“位”。 可单独用它们处理整数类型（主类型的一种）。左移位运算符（&lt;&lt;）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。 “有符号”右移位运算符（&gt;&gt;）则将运算符左边的运算对象向右移动运算符右侧指定的位数。“有符号”右移位运算符使用了“符号扩展”：若值为正，则在高位插入0；若值为负，则在高位插入1。Java也添加了一种“无符号”右移位运算符（&gt;&gt;&gt;），它使用了“零扩展”：无论正负，都在高位插入0。这一运算符是C或C++没有的。<br>　　若对char，byte或者short进行移位处理，那么在移位进行之前，它们会自动转换成一个int。只有右侧的5个低位才会用到。这样可防止我们在一个int数里移动不切实际的位数。若对一个long值进行处理，最后得到的结果也 是long。此时只会用到右侧的6个低位，防止移动超过long值里现成的位数。但在进行“无符号”右移位时，也可能遇到一个问题。若对byte或 short值进行右移位运算，得到的可能不是正确的结果（Java 1.0和Java 1.1特别突出）。它们会自动转换成int类型，并进行右移位。但“零扩展”不会发生，所以在那些情况下会得到-1的结果。</p>
 
           
         
@@ -1343,6 +1028,165 @@ $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强�
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Java 二分查找算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何靖">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何靖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/08/Java 二分查找算法/" itemprop="url">Java 二分查找算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T16:23:21+08:00">
+                2019-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1、二分查找又称折半查找，它是一种效率较高的查找方法。"><a href="#1、二分查找又称折半查找，它是一种效率较高的查找方法。" class="headerlink" title="1、二分查找又称折半查找，它是一种效率较高的查找方法。"></a>1、二分查找又称折半查找，它是一种效率较高的查找方法。</h4><h4 id="2、二分查找要求："><a href="#2、二分查找要求：" class="headerlink" title="2、二分查找要求："></a>2、二分查找要求：</h4><ul>
+<li>*<em>（1）必须采用顺序存储结构 *</em></li>
+<li><strong>（2）必须按关键字大小有序排列</strong></li>
+</ul>
+<p>####3、原理：<br>将数组分为三部分，依次是中值（所谓的中值就是数组中间位置的那个值）前，中值，中值后；将要查找的值和数组的中值进行比较，若小于中值则在中值前 面找，若大于中值则在中值后面找，等于中值时直接返回。然后依次是一个递归过程，将前半部分或者后半部分继续分解为三部分。</p>
+<p>####4、实现：二分查找的实现用递归和循环两种方式</p>
+<p>####5、代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package other;</span><br><span class="line"></span><br><span class="line">public class BinarySearch &#123;</span><br><span class="line">    /*</span><br><span class="line">     * 循环实现二分查找算法arr 已排好序的数组x 需要查找的数-1 无法查到数据</span><br><span class="line">     */</span><br><span class="line">    public static int binarySearch(int[] arr, int x) &#123;</span><br><span class="line">        int low = 0;   </span><br><span class="line">        int high = arr.length-1;   </span><br><span class="line">        while(low &lt;= high) &#123;   </span><br><span class="line">            int middle = (low + high)/2;   </span><br><span class="line">            if(x == arr[middle]) &#123;   </span><br><span class="line">                return middle;   </span><br><span class="line">            &#125;else if(x &lt;arr[middle]) &#123;   </span><br><span class="line">                high = middle - 1;   </span><br><span class="line">            &#125;else &#123;   </span><br><span class="line">                low = middle + 1;   </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        return -1;  </span><br><span class="line">    &#125;</span><br><span class="line">    //递归实现二分查找</span><br><span class="line">    public static int binarySearch(int[] dataset,int data,int beginIndex,int endIndex)&#123;    </span><br><span class="line">           int midIndex = (beginIndex+endIndex)/2;    </span><br><span class="line">           if(data &lt;dataset[beginIndex]||data&gt;dataset[endIndex]||beginIndex&gt;endIndex)&#123;  </span><br><span class="line">               return -1;    </span><br><span class="line">           &#125;  </span><br><span class="line">           if(data &lt;dataset[midIndex])&#123;    </span><br><span class="line">               return binarySearch(dataset,data,beginIndex,midIndex-1);    </span><br><span class="line">           &#125;else if(data&gt;dataset[midIndex])&#123;    </span><br><span class="line">               return binarySearch(dataset,data,midIndex+1,endIndex);    </span><br><span class="line">           &#125;else &#123;    </span><br><span class="line">               return midIndex;    </span><br><span class="line">           &#125;    </span><br><span class="line">       &#125;   </span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr = &#123; 6, 12, 33, 87, 90, 97, 108, 561 &#125;;</span><br><span class="line">        System.out.println(&quot;循环查找：&quot; + (binarySearch(arr, 87) + 1));</span><br><span class="line">        System.out.println(&quot;递归查找&quot;+binarySearch(arr,87,2,arr.length-1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Android 进程间通讯方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1665,7 +1509,7 @@ $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Java 二分查找算法/">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/JAVA基础(JAVA移位运算符)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="何靖">
@@ -1684,7 +1528,7 @@ $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/08/Java 二分查找算法/" itemprop="url">Java 二分查找算法</a></h1>
+                <a class="post-title-link" href="/2019/03/08/JAVA基础(JAVA移位运算符)/" itemprop="url">JAVA基础(JAVA移位运算符)</a></h1>
         
 
         <div class="post-meta">
@@ -1769,14 +1613,170 @@ $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强�
       
         
           
-            <h4 id="1、二分查找又称折半查找，它是一种效率较高的查找方法。"><a href="#1、二分查找又称折半查找，它是一种效率较高的查找方法。" class="headerlink" title="1、二分查找又称折半查找，它是一种效率较高的查找方法。"></a>1、二分查找又称折半查找，它是一种效率较高的查找方法。</h4><h4 id="2、二分查找要求："><a href="#2、二分查找要求：" class="headerlink" title="2、二分查找要求："></a>2、二分查找要求：</h4><ul>
-<li>*<em>（1）必须采用顺序存储结构 *</em></li>
-<li><strong>（2）必须按关键字大小有序排列</strong></li>
+            <p>移位运算符** 就是在二进制的基础上对数字进行平移。按照平移的方向和填充数字的规则分为三种：&lt;&lt;（左移）、&gt;&gt;（带符号右移）和&gt;&gt;&gt;（无符号右移）。<br>　　在移位运算时，byte、short和char类型移位后的结果会变成int类型，对于byte、short、char和int进行移位时，规定实际移动的次数是移动次数和32的余数，也就是移位33次和移位1次得到的结果相同。移动long型的数值时，规定实际移动的次数是移动次数和64的余数，也就是移动66次和移动2次得到的结果相同。
+　　</p>
+<p>###三种移位运算符的移动规则和使用如下所示：</p>
+<blockquote>
+<p><strong>“&lt;&lt;” 运算规则：</strong>按二进制形式把所有的数字向左移动对应的位数，高位移出（舍弃），低位的空位补零。<br><strong>语法格式 ：</strong>需要移位的数字 &lt;&lt; 移位的次数</p>
+</blockquote>
+<p>　　例如： 3 &lt;&lt; 2，则是将数字3左移2位<br>　　计算过程：<br>　　3 &lt;&lt; 2<br>　　首先把3转换为二进制数字0000 0000 0000 0000 0000 0000 0000 0011，然后把该数字高位（左侧）的两个零移出，其他的数字都朝左平移2位，最后在低位（右侧）的两个空位补零。则得到的最终结果是0000 0000 0000 0000 0000 0000 0000 1100，则转换为十进制是12.数学意义：<br>　　在数字没有溢出的前提下，对于正数和负数，左移一位都相当于乘以2的1次方，左移n位就相当于乘以2的n次方。</p>
+<blockquote>
+<p><strong>“&gt;&gt;”运算规则：</strong>按二进制形式把所有的数字向右移动对应巍峨位数，低位移出（舍弃），高位的空位补符号位，即正数补零，负数补1.<br><strong>语法格式：</strong>需要移位的数字 &gt;&gt; 移位的次数</p>
+</blockquote>
+<p>　　例如11 &gt;&gt; 2，则是将数字11右移2位<br>　　计算过程：11的二进制形式为：0000 0000 0000 0000 0000 0000 0000 1011，然后把低位的最后两个数字移出，因为该数字是正数，所以在高位补零。则得到的最终结果是0000 0000 0000 0000 0000 0000 0000 0010.转换为十进制是3.数学意义：右移一位相当于除2，右移n位相当于除以2的n次方。<br>　　&gt;&gt;&gt;运算规则：按二进制形式把所有的数字向右移动对应巍峨位数，低位移出（舍弃），高位的空位补零。对于正数来说和带符号右移相同，对于负数来说不同。<br>　　其他结构和&gt;&gt;相似。</p>
+<p>###小结：<br>　　二进制运算符，包括位运算符和移位运算符，使程序员可以在二进制基础上操作数字，可以更有效的进行运算，并且可以以二进制的形式存储和转换数据，是实现网络协议解析以及加密等算法的基础。<br>　　实例操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int i = -1;</span><br><span class="line">        i &gt;&gt;&gt;= 10;</span><br><span class="line">        System.out.println(i);</span><br><span class="line">        mTest();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">public static void mTest() &#123;</span><br><span class="line">        //左移</span><br><span class="line">        int i = 12; //二进制为:0000000000000000000000000001100</span><br><span class="line">        i &lt;&lt;= 2; //i左移2位，把高位的两位数字(左侧开始)抛弃,低位的空位补0,二进制码就为0000000000000000000000000110000</span><br><span class="line">        System.out.println(i); //二进制110000值为48；</span><br><span class="line">        System.out.println(&quot;&lt;br&gt;&quot;);</span><br><span class="line">        //右移</span><br><span class="line">        i &gt;&gt;= 2; //i右移2为，把低位的两个数字(右侧开始)抛弃,高位整数补0，负数补1，二进制码就为0000000000000000000000000001100</span><br><span class="line">        System.out.println(i); //二进制码为1100值为12</span><br><span class="line">        System.out.println(&quot;&lt;br&gt;&quot;);</span><br><span class="line">        //右移example</span><br><span class="line">        int j = 11;//二进制码为00000000000000000000000000001011</span><br><span class="line">        j &gt;&gt;= 2; //右移两位，抛弃最后两位,整数补0,二进制码为：00000000000000000000000000000010</span><br><span class="line">        System.out.println(j); //二进制码为10值为2</span><br><span class="line">        System.out.println(&quot;&lt;br&gt;&quot;);</span><br><span class="line">        byte k = -2; //转为int,二进制码为：0000000000000000000000000000010</span><br><span class="line">        k &gt;&gt;= 2; //右移2位，抛弃最后2位，负数补1,二进制吗为：11000000000000000000000000000</span><br><span class="line">        System.out.println(j); //二进制吗为11值为2</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　在Thinking in Java第三章中的一段话:<br>　　移位运算符面向的运算对象也是<br>　　二进制的“位”。 可单独用它们处理整数类型（主类型的一种）。左移位运算符（&lt;&lt;）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。 “有符号”右移位运算符（&gt;&gt;）则将运算符左边的运算对象向右移动运算符右侧指定的位数。“有符号”右移位运算符使用了“符号扩展”：若值为正，则在高位插入0；若值为负，则在高位插入1。Java也添加了一种“无符号”右移位运算符（&gt;&gt;&gt;），它使用了“零扩展”：无论正负，都在高位插入0。这一运算符是C或C++没有的。<br>　　若对char，byte或者short进行移位处理，那么在移位进行之前，它们会自动转换成一个int。只有右侧的5个低位才会用到。这样可防止我们在一个int数里移动不切实际的位数。若对一个long值进行处理，最后得到的结果也 是long。此时只会用到右侧的6个低位，防止移动超过long值里现成的位数。但在进行“无符号”右移位时，也可能遇到一个问题。若对byte或 short值进行右移位运算，得到的可能不是正确的结果（Java 1.0和Java 1.1特别突出）。它们会自动转换成int类型，并进行右移位。但“零扩展”不会发生，所以在那些情况下会得到-1的结果。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Volatile 原理及作用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何靖">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何靖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/08/Volatile 原理及作用/" itemprop="url">Volatile 原理及作用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T16:23:21+08:00">
+                2019-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>—— <a href="https://zh.wikipedia.org/zh-cn/Volatile%E5%8F%98%E9%87%8F" target="_blank" rel="noopener">维基百科</a><br>Java也支持volatile关键字，但它被用于其他不同的用途。当volatile用于一个作用域时，Java保证如下：</p>
+<ul>
+<li><strong>（适用于Java所有版本）读和写一个volatile变量有全局的排序</strong>。也就是说每个线程访问一个volatile作用域时会在继续执行之前读取它的当前值，而不是（可能）使用一个缓存的值。(但是并不保证经常读写volatile作用域时读和写的相对顺序，也就是说通常这并不是有用的线程构建)。</li>
+<li><strong>（适用于Java5及其之后的版本）volatile的读和写建立了一个happens-before关系，类似于申请和释放一个互斥锁<a href="https://zh.wikipedia.org/zh-cn/Volatile%E5%8F%98%E9%87%8F#cite_note-8" target="_blank" rel="noopener">[示例]</a></strong>。</li>
 </ul>
-<p>####3、原理：<br>将数组分为三部分，依次是中值（所谓的中值就是数组中间位置的那个值）前，中值，中值后；将要查找的值和数组的中值进行比较，若小于中值则在中值前 面找，若大于中值则在中值后面找，等于中值时直接返回。然后依次是一个递归过程，将前半部分或者后半部分继续分解为三部分。</p>
-<p>####4、实现：二分查找的实现用递归和循环两种方式</p>
-<p>####5、代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package other;</span><br><span class="line"></span><br><span class="line">public class BinarySearch &#123;</span><br><span class="line">    /*</span><br><span class="line">     * 循环实现二分查找算法arr 已排好序的数组x 需要查找的数-1 无法查到数据</span><br><span class="line">     */</span><br><span class="line">    public static int binarySearch(int[] arr, int x) &#123;</span><br><span class="line">        int low = 0;   </span><br><span class="line">        int high = arr.length-1;   </span><br><span class="line">        while(low &lt;= high) &#123;   </span><br><span class="line">            int middle = (low + high)/2;   </span><br><span class="line">            if(x == arr[middle]) &#123;   </span><br><span class="line">                return middle;   </span><br><span class="line">            &#125;else if(x &lt;arr[middle]) &#123;   </span><br><span class="line">                high = middle - 1;   </span><br><span class="line">            &#125;else &#123;   </span><br><span class="line">                low = middle + 1;   </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        return -1;  </span><br><span class="line">    &#125;</span><br><span class="line">    //递归实现二分查找</span><br><span class="line">    public static int binarySearch(int[] dataset,int data,int beginIndex,int endIndex)&#123;    </span><br><span class="line">           int midIndex = (beginIndex+endIndex)/2;    </span><br><span class="line">           if(data &lt;dataset[beginIndex]||data&gt;dataset[endIndex]||beginIndex&gt;endIndex)&#123;  </span><br><span class="line">               return -1;    </span><br><span class="line">           &#125;  </span><br><span class="line">           if(data &lt;dataset[midIndex])&#123;    </span><br><span class="line">               return binarySearch(dataset,data,beginIndex,midIndex-1);    </span><br><span class="line">           &#125;else if(data&gt;dataset[midIndex])&#123;    </span><br><span class="line">               return binarySearch(dataset,data,midIndex+1,endIndex);    </span><br><span class="line">           &#125;else &#123;    </span><br><span class="line">               return midIndex;    </span><br><span class="line">           &#125;    </span><br><span class="line">       &#125;   </span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr = &#123; 6, 12, 33, 87, 90, 97, 108, 561 &#125;;</span><br><span class="line">        System.out.println(&quot;循环查找：&quot; + (binarySearch(arr, 87) + 1));</span><br><span class="line">        System.out.println(&quot;递归查找&quot;+binarySearch(arr,87,2,arr.length-1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用volatile会比使用锁更快，但是在一些情况下它不能工作。volatile使用范围在Java5中得到了扩展，特别是双重检查锁定现在能够正确工作<a href="https://www.javamex.com/tutorials/double_checked_locking_fixing.shtml" target="_blank" rel="noopener">[示例]</a>。</p>
+<p>资料 1、<a href="https://zh.wikipedia.org/zh-cn/Volatile%E5%8F%98%E9%87%8F" target="_blank" rel="noopener">维基百科</a><br>资料 2、<a href="https://www.cnblogs.com/dolphin0520/p/3920373.html" target="_blank" rel="noopener">Java并发编程：volatile关键字解析</a><br>资料 3、<a href="https://www.cnblogs.com/ms-grf/p/7249220.html" target="_blank" rel="noopener">Java中缓存的原理</a></p>
+
           
         
       

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="####1、使用synchronized（可同步代码片段也可同步整个函数）  synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。即有synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前">
+<meta name="description" content="1、使用synchronized（可同步代码片段也可同步整个函数） synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。即有synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得">
 <meta name="keywords" content="Java,多线程,同步">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程`同步`有几种方式">
 <meta property="og:url" content="https://michael.org.cn/2019/03/08/多线程同步有几种方式/index.html">
 <meta property="og:site_name" content="何靖的博客">
-<meta property="og:description" content="####1、使用synchronized（可同步代码片段也可同步整个函数）  synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。即有synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前">
+<meta property="og:description" content="1、使用synchronized（可同步代码片段也可同步整个函数） synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。即有synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-15T06:50:09.000Z">
+<meta property="og:updated_time" content="2019-09-11T05:59:09.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程`同步`有几种方式">
-<meta name="twitter:description" content="####1、使用synchronized（可同步代码片段也可同步整个函数）  synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。即有synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前">
+<meta name="twitter:description" content="1、使用synchronized（可同步代码片段也可同步整个函数） synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。即有synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得">
 
 
 
@@ -353,8 +353,7 @@
       
 
       
-        <p>####1、使用synchronized（可同步代码片段也可同步整个函数）</p>
-<ul>
+        <h4 id="1、使用synchronized（可同步代码片段也可同步整个函数）"><a href="#1、使用synchronized（可同步代码片段也可同步整个函数）" class="headerlink" title="1、使用synchronized（可同步代码片段也可同步整个函数）"></a>1、使用synchronized（可同步代码片段也可同步整个函数）</h4><ul>
 <li><strong>synchronized关键字修饰的方法</strong>。<br>由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，<br>内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。<br>即有synchronized关键字修饰的方法。<br>由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，<br>内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。</li>
 </ul>
 <p>代码如:</p>
@@ -372,7 +371,7 @@
 <blockquote>
 <p>注：同步是一种高开销的操作，因此应该尽量减少同步的内容。<br>通常没有必要同步整个方法，使用synchronized代码块同步关键代码即可。</p>
 </blockquote>
-<p>####2、使用重入锁实现线程同步<br>在JavaSE5.0中新增了一个java.util.concurrent包来支持同步。<br>ReentrantLock类是可重入、互斥、实现了Lock接口的锁，<br>它与使用synchronized方法和快具有相同的基本行为和语义，并且扩展了其能力。<br>ReenreantLock类的常用方法有：</p>
+<h4 id="2、使用重入锁实现线程同步"><a href="#2、使用重入锁实现线程同步" class="headerlink" title="2、使用重入锁实现线程同步"></a>2、使用重入锁实现线程同步</h4><p>在JavaSE5.0中新增了一个java.util.concurrent包来支持同步。<br>ReentrantLock类是可重入、互斥、实现了Lock接口的锁，<br>它与使用synchronized方法和快具有相同的基本行为和语义，并且扩展了其能力。<br>ReenreantLock类的常用方法有：</p>
 <ul>
 <li><strong>ReentrantLock()</strong> : 创建一个ReentrantLock实例</li>
 <li><strong>lock()</strong> : 获得锁</li>
@@ -481,8 +480,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -544,6 +552,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、使用synchronized（可同步代码片段也可同步整个函数）"><span class="nav-number">1.</span> <span class="nav-text">1、使用synchronized（可同步代码片段也可同步整个函数）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、使用重入锁实现线程同步"><span class="nav-number">2.</span> <span class="nav-text">2、使用重入锁实现线程同步</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

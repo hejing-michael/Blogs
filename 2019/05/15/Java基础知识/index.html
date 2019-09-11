@@ -87,12 +87,10 @@
 <meta property="og:site_name" content="何靖的博客">
 <meta property="og:description" content="Java基础知识（转&amp;amp;添加）[TOC] java中“==”和equals的区别以及hashCode的区别==概述==即可以比较基本类型数据也可以比较对象数据，进行基本数据类型比较时比较的是值，进行对象比较时比较的是对象的内存地址。 equals概述它的作用也是判断两个对象是否相等。equals只能比较对象，即使Objects.equals()”可以”比较两个基本值类型变量，但它实际上比较的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://michael.org.cn/images/15589995967428.jpg">
-<meta property="og:updated_time" content="2019-05-30T22:48:04.000Z">
+<meta property="og:updated_time" content="2019-09-11T04:30:09.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础知识（转&amp;添加）">
 <meta name="twitter:description" content="Java基础知识（转&amp;amp;添加）[TOC] java中“==”和equals的区别以及hashCode的区别==概述==即可以比较基本类型数据也可以比较对象数据，进行基本数据类型比较时比较的是值，进行对象比较时比较的是对象的内存地址。 equals概述它的作用也是判断两个对象是否相等。equals只能比较对象，即使Objects.equals()”可以”比较两个基本值类型变量，但它实际上比较的">
-<meta name="twitter:image" content="https://michael.org.cn/images/15589995967428.jpg">
 
 
 
@@ -193,6 +191,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -240,7 +258,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="何靖">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -631,7 +649,6 @@
 <li>API <code>Serializable</code>是Java API，<code>Parcelable</code>是Android的API</li>
 <li>效率<br>Serializable 会使用反射，序列化和反序列化过程需要大量 I/O 操作， Parcelable 自已实现封送和解封（marshalled &amp;unmarshalled）操作不需要用反射，数据也存放在 Native 内存中，效率要快很多。</li>
 </ul>
-<p><img src="/images/15589995967428.jpg" alt></p>
 <p><strong>总结：</strong>可以看到，Serializable 的使用比较简单，创建一个版本号即可；而 Parcelable 则相对复杂一些，会有四个方法需要实现。</p>
 <p>一般在保存数据到 SD 卡或者网络传输时建议使用 Serializable 即可，虽然效率差一些，好在使用方便。</p>
 <p>而在运行时数据传递时建议使用 Parcelable，比如 Intent，Bundle 等，Android 底层做了优化处理，效率很高。</p>
@@ -749,6 +766,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="何靖">
+            
               <p class="site-author-name" itemprop="name">何靖</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -770,10 +789,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -781,10 +800,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 

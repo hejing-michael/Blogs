@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Git如何把本地代码推送到远程仓库/">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/22/微信小程序之文件系统初探/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="何靖">
@@ -300,7 +300,467 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/08/Git如何把本地代码推送到远程仓库/" itemprop="url">Git如何把本地代码推送到远程仓库</a></h1>
+                <a class="post-title-link" href="/2019/03/22/微信小程序之文件系统初探/" itemprop="url">微信小程序之文件系统初探</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T08:41:26+08:00">
+                2019-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="微信小程序之文件系统初探"><a href="#微信小程序之文件系统初探" class="headerlink" title="微信小程序之文件系统初探"></a>微信小程序之文件系统初探</h2><h3 id="1、文件下载"><a href="#1、文件下载" class="headerlink" title="1、文件下载"></a>1、文件下载</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//下载文件</span></span><br><span class="line">go_download: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">var</span> baseUrl = <span class="string">"http://rwh.blob.core.chinacloudapi.cn"</span>;</span><br><span class="line">  <span class="keyword">var</span> fileName = <span class="string">"1-e2b214af930149ee80c8142d067148a7.exam"</span>;</span><br><span class="line">  <span class="keyword">var</span> url = baseUrl + <span class="string">"/data/ExamBuilder2.0/20190320"</span> + <span class="string">"/"</span> + fileName;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"dowload url:"</span> + url);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//用户缓存目录</span></span><br><span class="line">  <span class="keyword">var</span> userLocalPath = wx.env.USER_DATA_PATH;</span><br><span class="line">  <span class="keyword">var</span> localPath = <span class="string">"wxfile://"</span>;</span><br><span class="line">  <span class="keyword">var</span> path = userLocalPath + <span class="string">"/"</span> + fileName</span><br><span class="line">  <span class="keyword">var</span> localPath = localPath + <span class="string">"/"</span> + fileName</span><br><span class="line">  <span class="keyword">var</span> authorization = <span class="string">"Basic ZThlYWJmNWMwN2I0NGI0YmEzOGJmZWMyMTJkM2U1ZDU="</span>;</span><br><span class="line">  <span class="keyword">var</span> apptoken = <span class="string">"Authorization"</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> downloadTask = wx.downloadFile(&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 待下载的云资源</span></span><br><span class="line">    url: url,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//下载成功后的回调函数</span></span><br><span class="line">    success(res) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"dowload res.errMsg:"</span> + res.errMsg);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"dowload res.statusCode:"</span> + res.statusCode);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"dowload res.tempFilePath:"</span> + res.tempFilePath);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (res.statusCode === <span class="number">200</span>) &#123;</span><br><span class="line">        wx.showToast(&#123;</span><br><span class="line">          title: <span class="string">'下载成功！'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//失败回调函数</span></span><br><span class="line">    fai: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"downloadFile fai:"</span> + res.errMsg)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//完成回调函数</span></span><br><span class="line">    complete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"downloadFile complete"</span>)</span><br><span class="line">      content.getReaddir(targPath)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  downloadTask.onProgressUpdate(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'下载进度'</span>, res.progress)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'已经下载的数据长度'</span>, res.totalBytesWritten)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'预期需要下载的数据总长度'</span>, res.totalBytesExpectedToWrite)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// downloadTask.abort() // 取消下载任务</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、持久化文件到本地"><a href="#2、持久化文件到本地" class="headerlink" title="2、持久化文件到本地"></a>2、持久化文件到本地</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> //下载成功的文件目前存在temp文件夹下，它属于临时文件</span><br><span class="line"> //如果想要将其持久化，需要使用wx.saveFile()将其保存至store文件夹下，</span><br><span class="line"> //在使用这个函数时，temp文件夹下的临时文件会被删除。</span><br><span class="line">wx.saveFile(&#123;</span><br><span class="line">   tempFilePath: res.tempFilePath,</span><br><span class="line">      success: function(res) &#123;</span><br><span class="line">      console.log(res);</span><br><span class="line">      var savedFilePath = res.savedFilePath;</span><br><span class="line">      console.log(&apos;文件已下载到&apos; + savedFilePath);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、解压压缩文件"><a href="#3、解压压缩文件" class="headerlink" title="3、解压压缩文件"></a>3、解压压缩文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//解压文件</span><br><span class="line">unzipFile: function(path, targPath) &#123;</span><br><span class="line">  var content = this;</span><br><span class="line">  console.log(&quot;unzip path:&quot; + path)</span><br><span class="line">  console.log(&quot;unzip targPath:&quot; + targPath)</span><br><span class="line">  wx.getFileSystemManager().unzip(&#123;</span><br><span class="line">    //文件路径</span><br><span class="line">    zipFilePath: path,</span><br><span class="line"></span><br><span class="line">    //目标文件夹</span><br><span class="line">    targetPath: targPath,</span><br><span class="line"></span><br><span class="line">    //成功回调函数</span><br><span class="line">    success: function(res) &#123;</span><br><span class="line">      console.log(res.errMsg)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    //失败回调函数</span><br><span class="line">    fai: function(res) &#123;</span><br><span class="line">      console.log(&quot;unzip fai:&quot; + res.errMsg)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    //完成回调函数</span><br><span class="line">    complete: function() &#123;</span><br><span class="line">      console.log(&quot;unzip complete&quot;)</span><br><span class="line">      content.getReaddir(targPath)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、读取文件到内存"><a href="#3、读取文件到内存" class="headerlink" title="3、读取文件到内存"></a>3、读取文件到内存</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//读取文件</span><br><span class="line">  readFile: function(path) &#123;</span><br><span class="line">    console.log(&quot;readFile start path:&quot; + path)</span><br><span class="line">    var userLocalPath = wx.env.USER_DATA_PATH;</span><br><span class="line">    wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">      //文件路径</span><br><span class="line">      filePath: path,</span><br><span class="line"></span><br><span class="line">      //成功回调函数</span><br><span class="line">      success: function(res) &#123;</span><br><span class="line">        console.log(&quot;unzip success res:&quot; + res.errMsg)</span><br><span class="line">        console.log(res)</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      //失败回调函数</span><br><span class="line">      fai: function(res) &#123;</span><br><span class="line">        console.log(&quot;unzip fai:&quot; + res.errMsg)</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      //完成回调函数</span><br><span class="line">      complete: function() &#123;</span><br><span class="line">        console.log(&quot;unzip complete&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、查看目标文件夹的文件列表"><a href="#4、查看目标文件夹的文件列表" class="headerlink" title="4、查看目标文件夹的文件列表"></a>4、查看目标文件夹的文件列表</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查看下载的文件列表</span></span><br><span class="line"> getReaddir: <span class="function"><span class="keyword">function</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"getReaddir start"</span>)</span><br><span class="line">   wx.getFileSystemManager().readdir(&#123;</span><br><span class="line">     dirPath: path,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//成功回调函数</span></span><br><span class="line">     success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getReaddir success res:"</span> + res.errMsg)</span><br><span class="line">       <span class="built_in">console</span>.log(res)</span><br><span class="line">     &#125;,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//失败回调函数</span></span><br><span class="line">     fai: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getReaddir fai:"</span> + res.errMsg)</span><br><span class="line">     &#125;,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//完成回调函数</span></span><br><span class="line">     complete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getReaddir complete"</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、查看已经缓存的文件列表"><a href="#5、查看已经缓存的文件列表" class="headerlink" title="5、查看已经缓存的文件列表"></a>5、查看已经缓存的文件列表</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查看下载的文件列表</span></span><br><span class="line"> getUserSavedFileList: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"getUserSavedFileList start"</span>)</span><br><span class="line">   wx.getFileSystemManager().getSavedFileList(&#123;</span><br><span class="line">     <span class="comment">//成功回调函数</span></span><br><span class="line">     success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getUserSavedFileList success res:"</span> + res)</span><br><span class="line">       <span class="built_in">console</span>.log(res)</span><br><span class="line">     &#125;,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//失败回调函数</span></span><br><span class="line">     fai: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getUserSavedFileList fai:"</span> + res.errMsg)</span><br><span class="line">     &#125;,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//完成回调函数</span></span><br><span class="line">     complete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getUserSavedFileList complete"</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/14/责任链模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何靖">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何靖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/14/责任链模式/" itemprop="url">责任链模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-14T16:23:21+08:00">
+                2019-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h2><p><strong>责任链模式：</strong>责任链模式在面向对象程式设计里是一种软件设计模式，它包含了一些命令对象和一系列的处理对象。每一个处理对象决定它能处理哪些命令对象，它也知道如何将它不能处理的命令对象传递给该链中的下一个处理对象。该模式还描述了往该处理链的末尾添加新的处理对象的方法。—维基百科</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> ERR = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> NOTICE = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> DEBUG = <span class="number">7</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mask;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// The next element in the chain of responsibility</span></span><br><span class="line">    <span class="keyword">protected</span> Logger next;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Logger <span class="title">setNext</span><span class="params">( Logger l)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        next = l;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">message</span><span class="params">( String msg, <span class="keyword">int</span> priority )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( priority &lt;= mask ) </span><br><span class="line">        &#123;</span><br><span class="line">            writeMessage( msg );</span><br><span class="line">            <span class="keyword">if</span> ( next != <span class="keyword">null</span> )</span><br><span class="line">            &#123;</span><br><span class="line">                next.message( msg, priority );</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">writeMessage</span><span class="params">( String msg )</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StdoutLogger</span> <span class="keyword">extends</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StdoutLogger</span><span class="params">( <span class="keyword">int</span> mask )</span> </span>&#123; <span class="keyword">this</span>.mask = mask; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">writeMessage</span><span class="params">( String msg )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println( <span class="string">"Writting to stdout: "</span> + msg );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmailLogger</span> <span class="keyword">extends</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">EmailLogger</span><span class="params">( <span class="keyword">int</span> mask )</span> </span>&#123; <span class="keyword">this</span>.mask = mask; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">writeMessage</span><span class="params">( String msg )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println( <span class="string">"Sending via email: "</span> + msg );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StderrLogger</span> <span class="keyword">extends</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StderrLogger</span><span class="params">( <span class="keyword">int</span> mask )</span> </span>&#123; <span class="keyword">this</span>.mask = mask; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">writeMessage</span><span class="params">( String msg )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println( <span class="string">"Sending to stderr: "</span> + msg );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChainOfResponsibilityExample</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String[] args )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// Build the chain of responsibility</span></span><br><span class="line">        Logger l = <span class="keyword">new</span> StdoutLogger( Logger.DEBUG).setNext(</span><br><span class="line">                            <span class="keyword">new</span> EmailLogger( Logger.NOTICE ).setNext(</span><br><span class="line">                            <span class="keyword">new</span> StderrLogger( Logger.ERR ) ) );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Handled by StdoutLogger</span></span><br><span class="line">        l.message( <span class="string">"Entering function y."</span>, Logger.DEBUG );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Handled by StdoutLogger and EmailLogger</span></span><br><span class="line">        l.message( <span class="string">"Step1 completed."</span>, Logger.NOTICE );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Handled by all three loggers</span></span><br><span class="line">        l.message( <span class="string">"An error has occurred."</span>, Logger.ERR );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Java 二分查找算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何靖">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何靖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/08/Java 二分查找算法/" itemprop="url">Java 二分查找算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T16:23:21+08:00">
+                2019-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1、二分查找又称折半查找，它是一种效率较高的查找方法。"><a href="#1、二分查找又称折半查找，它是一种效率较高的查找方法。" class="headerlink" title="1、二分查找又称折半查找，它是一种效率较高的查找方法。"></a>1、二分查找又称折半查找，它是一种效率较高的查找方法。</h4><h4 id="2、二分查找要求："><a href="#2、二分查找要求：" class="headerlink" title="2、二分查找要求："></a>2、二分查找要求：</h4><ul>
+<li>*<em>（1）必须采用顺序存储结构 *</em></li>
+<li><strong>（2）必须按关键字大小有序排列</strong></li>
+</ul>
+<h4 id="3、原理："><a href="#3、原理：" class="headerlink" title="3、原理："></a>3、原理：</h4><p>将数组分为三部分，依次是中值（所谓的中值就是数组中间位置的那个值）前，中值，中值后；将要查找的值和数组的中值进行比较，若小于中值则在中值前 面找，若大于中值则在中值后面找，等于中值时直接返回。然后依次是一个递归过程，将前半部分或者后半部分继续分解为三部分。</p>
+<h4 id="4、实现：二分查找的实现用递归和循环两种方式"><a href="#4、实现：二分查找的实现用递归和循环两种方式" class="headerlink" title="4、实现：二分查找的实现用递归和循环两种方式"></a>4、实现：二分查找的实现用递归和循环两种方式</h4><h4 id="5、代码"><a href="#5、代码" class="headerlink" title="5、代码"></a>5、代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package other;</span><br><span class="line"></span><br><span class="line">public class BinarySearch &#123;</span><br><span class="line">    /*</span><br><span class="line">     * 循环实现二分查找算法arr 已排好序的数组x 需要查找的数-1 无法查到数据</span><br><span class="line">     */</span><br><span class="line">    public static int binarySearch(int[] arr, int x) &#123;</span><br><span class="line">        int low = 0;   </span><br><span class="line">        int high = arr.length-1;   </span><br><span class="line">        while(low &lt;= high) &#123;   </span><br><span class="line">            int middle = (low + high)/2;   </span><br><span class="line">            if(x == arr[middle]) &#123;   </span><br><span class="line">                return middle;   </span><br><span class="line">            &#125;else if(x &lt;arr[middle]) &#123;   </span><br><span class="line">                high = middle - 1;   </span><br><span class="line">            &#125;else &#123;   </span><br><span class="line">                low = middle + 1;   </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        return -1;  </span><br><span class="line">    &#125;</span><br><span class="line">    //递归实现二分查找</span><br><span class="line">    public static int binarySearch(int[] dataset,int data,int beginIndex,int endIndex)&#123;    </span><br><span class="line">           int midIndex = (beginIndex+endIndex)/2;    </span><br><span class="line">           if(data &lt;dataset[beginIndex]||data&gt;dataset[endIndex]||beginIndex&gt;endIndex)&#123;  </span><br><span class="line">               return -1;    </span><br><span class="line">           &#125;  </span><br><span class="line">           if(data &lt;dataset[midIndex])&#123;    </span><br><span class="line">               return binarySearch(dataset,data,beginIndex,midIndex-1);    </span><br><span class="line">           &#125;else if(data&gt;dataset[midIndex])&#123;    </span><br><span class="line">               return binarySearch(dataset,data,midIndex+1,endIndex);    </span><br><span class="line">           &#125;else &#123;    </span><br><span class="line">               return midIndex;    </span><br><span class="line">           &#125;    </span><br><span class="line">       &#125;   </span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr = &#123; 6, 12, 33, 87, 90, 97, 108, 561 &#125;;</span><br><span class="line">        System.out.println(&quot;循环查找：&quot; + (binarySearch(arr, 87) + 1));</span><br><span class="line">        System.out.println(&quot;递归查找&quot;+binarySearch(arr,87,2,arr.length-1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Git回滚代码到某个commit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何靖">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何靖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/08/Git回滚代码到某个commit/" itemprop="url">Git回滚代码到某个commit</a></h1>
         
 
         <div class="post-meta">
@@ -374,320 +834,10 @@
       
         
           
-            <h5 id="1、-初始化版本库"><a href="#1、-初始化版本库" class="headerlink" title="1、 初始化版本库"></a>1、 初始化版本库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+            <h3 id="回退命令："><a href="#回退命令：" class="headerlink" title="回退命令："></a>回退命令：</h3><pre><code>$git reset --hard HEAD^      回退到上个版本  
+$git reset --hard HEAD~3     回退三次提交
+$git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强推到远程："><a href="#强推到远程：" class="headerlink" title="强推到远程："></a>强推到远程：</h3><pre><code>$git push origin HEAD --force </code></pre><p><a href="https://www.cnblogs.com/shanyou/p/7907781.html" target="_blank" rel="noopener">相关链接</a></p>
 
-<h5 id="2、-添加文件到版本库（只是添加到缓存区），-代表添加文件夹下所有文件"><a href="#2、-添加文件到版本库（只是添加到缓存区），-代表添加文件夹下所有文件" class="headerlink" title="2、 添加文件到版本库（只是添加到缓存区），.代表添加文件夹下所有文件"></a>2、 添加文件到版本库（只是添加到缓存区），.代表添加文件夹下所有文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
-
-<h5 id="3、-把添加的文件提交到版本库，并填写提交备注"><a href="#3、-把添加的文件提交到版本库，并填写提交备注" class="headerlink" title="3、 把添加的文件提交到版本库，并填写提交备注"></a>3、 把添加的文件提交到版本库，并填写提交备注</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;first commit&quot;</span><br></pre></td></tr></table></figure>
-
-<h5 id="4、-把本地库与远程库关联"><a href="#4、-把本地库与远程库关联" class="headerlink" title="4、 把本地库与远程库关联"></a>4、 把本地库与远程库关联</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin 远程库地址</span><br></pre></td></tr></table></figure>
-
-<h5 id="5、-第一次推送时"><a href="#5、-第一次推送时" class="headerlink" title="5、 第一次推送时"></a>5、 第一次推送时</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<h5 id="6、第一次推送后，直接使用该命令即可推送修改"><a href="#6、第一次推送后，直接使用该命令即可推送修改" class="headerlink" title="6、第一次推送后，直接使用该命令即可推送修改"></a>6、第一次推送后，直接使用该命令即可推送修改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Volatile 原理及作用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="何靖">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何靖的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/08/Volatile 原理及作用/" itemprop="url">Volatile 原理及作用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T16:23:21+08:00">
-                2019-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>—— <a href="https://zh.wikipedia.org/zh-cn/Volatile%E5%8F%98%E9%87%8F" target="_blank" rel="noopener">维基百科</a><br>Java也支持volatile关键字，但它被用于其他不同的用途。当volatile用于一个作用域时，Java保证如下：</p>
-<ul>
-<li><strong>（适用于Java所有版本）读和写一个volatile变量有全局的排序</strong>。也就是说每个线程访问一个volatile作用域时会在继续执行之前读取它的当前值，而不是（可能）使用一个缓存的值。(但是并不保证经常读写volatile作用域时读和写的相对顺序，也就是说通常这并不是有用的线程构建)。</li>
-<li><strong>（适用于Java5及其之后的版本）volatile的读和写建立了一个happens-before关系，类似于申请和释放一个互斥锁<a href="https://zh.wikipedia.org/zh-cn/Volatile%E5%8F%98%E9%87%8F#cite_note-8" target="_blank" rel="noopener">[示例]</a></strong>。</li>
-</ul>
-<p>使用volatile会比使用锁更快，但是在一些情况下它不能工作。volatile使用范围在Java5中得到了扩展，特别是双重检查锁定现在能够正确工作<a href="https://www.javamex.com/tutorials/double_checked_locking_fixing.shtml" target="_blank" rel="noopener">[示例]</a>。</p>
-<p>资料 1、<a href="https://zh.wikipedia.org/zh-cn/Volatile%E5%8F%98%E9%87%8F" target="_blank" rel="noopener">维基百科</a><br>资料 2、<a href="https://www.cnblogs.com/dolphin0520/p/3920373.html" target="_blank" rel="noopener">Java并发编程：volatile关键字解析</a><br>资料 3、<a href="https://www.cnblogs.com/ms-grf/p/7249220.html" target="_blank" rel="noopener">Java中缓存的原理</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/单例模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="何靖">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何靖的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/08/单例模式/" itemprop="url">单例模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T16:23:21+08:00">
-                2019-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>本文摘自维基百科</p>
-</blockquote>
-<p><strong>单例模式，也叫单子模式</strong>，是一种常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。<br> —— <a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">维基百科</a></p>
-<p><strong>实现单例模式的思路</strong>：一个类能返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）；当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用；同时我们还将该类的构造函数定义为私有方法，这样其他处的代码就无法通过调用该类的构造函数来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例。</p>
-<p>通常单例模式在Java语言中，有两种构建方式：</p>
-<ul>
-<li><strong>懒汉方式</strong>：指全局的单例实例在第一次被使用时构建。</li>
-<li><strong>饿汉方式</strong>：指全局的单例实例在类装载时构建。</li>
-</ul>
-<p>Java<br>在Java语言中，单例模式(饿汉模式)应用的例子如下述代码所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">  private final static Singleton INSTANCE = new Singleton();</span><br><span class="line"></span><br><span class="line">  // Private constructor suppresses   </span><br><span class="line">  private Singleton() &#123;&#125;</span><br><span class="line"> </span><br><span class="line">  // default public constructor</span><br><span class="line">  public static Singleton getInstance() &#123;</span><br><span class="line">      return INSTANCE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在Java编程语言中，单例模式(懒汉模式)应用的例子如下述代码所示 (此种方法只能用在JDK5及以后版本(注意 INSTANCE 被声明为 volatile)，之前的版本使用“双重检查锁”会发生非预期行为[1])：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Singleton &#123;</span><br><span class="line">  private static volatile Singleton INSTANCE = null;</span><br><span class="line"></span><br><span class="line">  // Private constructor suppresses </span><br><span class="line">  // default public constructor</span><br><span class="line">  private Singleton() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  //thread safe and performance  promote </span><br><span class="line">  public static  Singleton getInstance() &#123;</span><br><span class="line">      if(INSTANCE == null)&#123;</span><br><span class="line">           synchronized(Singleton.class)&#123;</span><br><span class="line">               //when more than two threads run into the first null check same time, to avoid instanced more than one time, it needs to be checked again.</span><br><span class="line">               if(INSTANCE == null)&#123; </span><br><span class="line">                   INSTANCE = new Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; </span><br><span class="line">      &#125;</span><br><span class="line">      return INSTANCE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -903,155 +1053,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Git回滚代码到某个commit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="何靖">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何靖的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/08/Git回滚代码到某个commit/" itemprop="url">Git回滚代码到某个commit</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T16:23:21+08:00">
-                2019-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="回退命令："><a href="#回退命令：" class="headerlink" title="回退命令："></a>回退命令：</h3><pre><code>$git reset --hard HEAD^      回退到上个版本  
-$git reset --hard HEAD~3     回退三次提交
-$git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强推到远程："><a href="#强推到远程：" class="headerlink" title="强推到远程："></a>强推到远程：</h3><pre><code>$git push origin HEAD --force </code></pre><p><a href="https://www.cnblogs.com/shanyou/p/7907781.html" target="_blank" rel="noopener">相关链接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1099,7 +1105,7 @@ $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

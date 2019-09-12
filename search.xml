@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java之Dalvik和JVM的区别]]></title>
+    <url>%2F2019%2F09%2F12%2FJava%E4%B9%8BDalvik%E5%92%8CJVM%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[Java之Dalvik和JVM的区别Dalvik虚拟机概述Dalvik虚拟机，是Google等厂商合作开发的Android移动设备平台的核心组成部分之一。他可以支持已经转换的.dex（即「Dalvik Executable」）格式的Java应用程序的运行。.dex格式是专为Dalvik设计的一中压缩格式，适合内存和处理器速度有限的系统。Dalvik是由Dan Bornstein编写的，名字源于他的祖父曾经居住的过的小渔村達爾維克（Dalvík），位于冰島埃亚峡湾。 大多数虚拟机包括JVM都是一種堆疊機器，而Dalvik虚拟机则是寄存器机。两种架构各有优劣，一般而言，基于堆疊的机器需要更多指令，而基于寄存器的机器指令更长。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[学习计划之Android]]></title>
+    <url>%2F2019%2F09%2F12%2F%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E4%B9%8BAndroid%2F</url>
+    <content type="text"><![CDATA[Android基础知识相关知识点： 知识点 完成状态 参考 Android之Context概述 待处理 参考 Android四大组件之Activity 待处理 参考 Android四大组件之Service 待处理 参考 Android四大组件之BroadcastReceiver 待处理 参考 Android四大组件之ContentProvider 待处理 参考 Android之启动流程 待处理 参考 Android之View的绘制流程 待处理 参考 Java之Dalvik和JVM的区别 待处理 参考]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Gradle之FTP文件下载]]></title>
     <url>%2F2019%2F09%2F10%2FGradle%E4%B9%8BFTP%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%2F</url>
     <content type="text"><![CDATA[Gradle之FTP文件下载1、背景项目上需要使用本地web，所以我们直接将web直接放入assets资源文件夹下。但是随着开发进行web包越来越大；所以我们想着从版本库里面去掉web将其忽略掉，使用gradle命令下载web。由于web包是放在局域网服务器上的，服务器支持FTP文件协议，所以使用FTP插件下载文件。 2、FTPFTP官网文档Gradle官网文档gradle配置 3、FTP工具ftp-util.gradle 123456789101112131415161718192021222324252627282930313233configurations &#123; ftpAntTask&#125;dependencies &#123; ftpAntTask(&quot;org.apache.ant:ant-commons-net:1.9.2&quot;) &#123; module(&quot;commons-net:commons-net:3.3&quot;) &#125;&#125;void downloadFtpFiles(String serverIp, String userId, String password, String url, localDir) &#123; ant.taskdef( name: &apos;ftp&apos;, classname: &apos;org.apache.tools.ant.taskdefs.optional.net.FTP&apos;, classpath: configurations.ftpAntTask.asPath ) //指定ftp地址及账户信息 ant.ftp(action: &apos;get&apos;, server: serverIp, userid: userId, password: password, remotedir: url) &#123; // 删除老文件 delete(new File(localDir)) //指定下载文件位置 fileset(dir: new File(localDir)) &#123; include(name: &quot;**&quot;) &#125; &#125;&#125;//导出函数ext &#123; downloadFtpFiles = this.&amp;downloadFtpFiles&#125; 使用方式：导入方式：将ftp-util.gradle文件放在根目录下然后使用一下代码导入groovy代码 1apply from: "$&#123;project.rootProject.file('ftp-util.gradle')&#125;" 下载任务 12345678910111213141516171819202122task downloadFiles() &#123; //清理缓存 dependsOn 'clean' def dir = buildDir.getPath() + '/dir' doLast &#123; //获取最新版本信息 ant &#123; println 'web-ftp:serverIp:' + serverIp println 'web-ftp:userId:' + userId println 'web-ftp:password:' + password println 'web-ftp:dir:' + dir println 'web-ftp:sync start' def url = webUrl + '/latest' //调用FTP插件下载文件函数 downloadFtpFiles(serverIp, userId, password, url, dir) println 'web-ftp:sync end' &#125; &#125;&#125; 调用task方式1./gradlew downloadFiles]]></content>
@@ -123,9 +133,22 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Git如何把本地代码推送到远程仓库]]></title>
-    <url>%2F2019%2F03%2F08%2FGit%E5%A6%82%E4%BD%95%E6%8A%8A%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%2F</url>
-    <content type="text"><![CDATA[1、 初始化版本库1$ git init 2、 添加文件到版本库（只是添加到缓存区），.代表添加文件夹下所有文件1$ git add . 3、 把添加的文件提交到版本库，并填写提交备注1$ git commit -m &quot;first commit&quot; 4、 把本地库与远程库关联1$ git remote add origin 远程库地址 5、 第一次推送时1$ git push -u origin master 6、第一次推送后，直接使用该命令即可推送修改1$ git push origin master]]></content>
+    <title><![CDATA[Java 二分查找算法]]></title>
+    <url>%2F2019%2F03%2F08%2FJava%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[1、二分查找又称折半查找，它是一种效率较高的查找方法。2、二分查找要求： *（1）必须采用顺序存储结构 * （2）必须按关键字大小有序排列 3、原理：将数组分为三部分，依次是中值（所谓的中值就是数组中间位置的那个值）前，中值，中值后；将要查找的值和数组的中值进行比较，若小于中值则在中值前 面找，若大于中值则在中值后面找，等于中值时直接返回。然后依次是一个递归过程，将前半部分或者后半部分继续分解为三部分。 4、实现：二分查找的实现用递归和循环两种方式5、代码123456789101112131415161718192021222324252627282930313233343536373839404142package other;public class BinarySearch &#123; /* * 循环实现二分查找算法arr 已排好序的数组x 需要查找的数-1 无法查到数据 */ public static int binarySearch(int[] arr, int x) &#123; int low = 0; int high = arr.length-1; while(low &lt;= high) &#123; int middle = (low + high)/2; if(x == arr[middle]) &#123; return middle; &#125;else if(x &lt;arr[middle]) &#123; high = middle - 1; &#125;else &#123; low = middle + 1; &#125; &#125; return -1; &#125; //递归实现二分查找 public static int binarySearch(int[] dataset,int data,int beginIndex,int endIndex)&#123; int midIndex = (beginIndex+endIndex)/2; if(data &lt;dataset[beginIndex]||data&gt;dataset[endIndex]||beginIndex&gt;endIndex)&#123; return -1; &#125; if(data &lt;dataset[midIndex])&#123; return binarySearch(dataset,data,beginIndex,midIndex-1); &#125;else if(data&gt;dataset[midIndex])&#123; return binarySearch(dataset,data,midIndex+1,endIndex); &#125;else &#123; return midIndex; &#125; &#125; public static void main(String[] args) &#123; int[] arr = &#123; 6, 12, 33, 87, 90, 97, 108, 561 &#125;; System.out.println(&quot;循环查找：&quot; + (binarySearch(arr, 87) + 1)); System.out.println(&quot;递归查找&quot;+binarySearch(arr,87,2,arr.length-1)); &#125;&#125;]]></content>
+      <categories>
+        <category>Java</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git回滚代码到某个commit]]></title>
+    <url>%2F2019%2F03%2F08%2FGit%E5%9B%9E%E6%BB%9A%E4%BB%A3%E7%A0%81%E5%88%B0%E6%9F%90%E4%B8%AAcommit%2F</url>
+    <content type="text"><![CDATA[回退命令：$git reset --hard HEAD^ 回退到上个版本 $git reset --hard HEAD~3 回退三次提交 $git reset --hard commit-id 退到/进到指定commit强推到远程：$git push origin HEAD --force 相关链接]]></content>
       <categories>
         <category>Git</category>
       </categories>
@@ -133,29 +156,6 @@
         <tag>版本回滚</tag>
         <tag>commit</tag>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Volatile 原理及作用]]></title>
-    <url>%2F2019%2F03%2F08%2FVolatile%20%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BD%9C%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[—— 维基百科Java也支持volatile关键字，但它被用于其他不同的用途。当volatile用于一个作用域时，Java保证如下： （适用于Java所有版本）读和写一个volatile变量有全局的排序。也就是说每个线程访问一个volatile作用域时会在继续执行之前读取它的当前值，而不是（可能）使用一个缓存的值。(但是并不保证经常读写volatile作用域时读和写的相对顺序，也就是说通常这并不是有用的线程构建)。 （适用于Java5及其之后的版本）volatile的读和写建立了一个happens-before关系，类似于申请和释放一个互斥锁[示例]。 使用volatile会比使用锁更快，但是在一些情况下它不能工作。volatile使用范围在Java5中得到了扩展，特别是双重检查锁定现在能够正确工作[示例]。 资料 1、维基百科资料 2、Java并发编程：volatile关键字解析资料 3、Java中缓存的原理]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Volatile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[单例模式]]></title>
-    <url>%2F2019%2F03%2F08%2F%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[本文摘自维基百科 单例模式，也叫单子模式，是一种常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。 —— 维基百科 实现单例模式的思路：一个类能返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）；当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用；同时我们还将该类的构造函数定义为私有方法，这样其他处的代码就无法通过调用该类的构造函数来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例。 通常单例模式在Java语言中，有两种构建方式： 懒汉方式：指全局的单例实例在第一次被使用时构建。 饿汉方式：指全局的单例实例在类装载时构建。 Java在Java语言中，单例模式(饿汉模式)应用的例子如下述代码所示： 1234567891011public class Singleton &#123; private final static Singleton INSTANCE = new Singleton(); // Private constructor suppresses private Singleton() &#123;&#125; // default public constructor public static Singleton getInstance() &#123; return INSTANCE; &#125;&#125; 在Java编程语言中，单例模式(懒汉模式)应用的例子如下述代码所示 (此种方法只能用在JDK5及以后版本(注意 INSTANCE 被声明为 volatile)，之前的版本使用“双重检查锁”会发生非预期行为[1])： 123456789101112131415161718192021public class Singleton &#123; private static volatile Singleton INSTANCE = null; // Private constructor suppresses // default public constructor private Singleton() &#123;&#125; //thread safe and performance promote public static Singleton getInstance() &#123; if(INSTANCE == null)&#123; synchronized(Singleton.class)&#123; //when more than two threads run into the first null check same time, to avoid instanced more than one time, it needs to be checked again. if(INSTANCE == null)&#123; INSTANCE = new Singleton(); &#125; &#125; &#125; return INSTANCE; &#125;&#125;]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-        <tag>单利模式</tag>
       </tags>
   </entry>
   <entry>
@@ -173,29 +173,27 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Git回滚代码到某个commit]]></title>
-    <url>%2F2019%2F03%2F08%2FGit%E5%9B%9E%E6%BB%9A%E4%BB%A3%E7%A0%81%E5%88%B0%E6%9F%90%E4%B8%AAcommit%2F</url>
-    <content type="text"><![CDATA[回退命令：$git reset --hard HEAD^ 回退到上个版本 $git reset --hard HEAD~3 回退三次提交 $git reset --hard commit-id 退到/进到指定commit强推到远程：$git push origin HEAD --force 相关链接]]></content>
+    <title><![CDATA[JAVA基础(JAVA移位运算符)]]></title>
+    <url>%2F2019%2F03%2F08%2FJAVA%E5%9F%BA%E7%A1%80(JAVA%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6)%2F</url>
+    <content type="text"><![CDATA[移位运算符** 就是在二进制的基础上对数字进行平移。按照平移的方向和填充数字的规则分为三种：&lt;&lt;（左移）、&gt;&gt;（带符号右移）和&gt;&gt;&gt;（无符号右移）。 在移位运算时，byte、short和char类型移位后的结果会变成int类型，对于byte、short、char和int进行移位时，规定实际移动的次数是移动次数和32的余数，也就是移位33次和移位1次得到的结果相同。移动long型的数值时，规定实际移动的次数是移动次数和64的余数，也就是移动66次和移动2次得到的结果相同。 ###三种移位运算符的移动规则和使用如下所示： “&lt;&lt;” 运算规则：按二进制形式把所有的数字向左移动对应的位数，高位移出（舍弃），低位的空位补零。语法格式 ：需要移位的数字 &lt;&lt; 移位的次数 例如： 3 &lt;&lt; 2，则是将数字3左移2位 计算过程： 3 &lt;&lt; 2 首先把3转换为二进制数字0000 0000 0000 0000 0000 0000 0000 0011，然后把该数字高位（左侧）的两个零移出，其他的数字都朝左平移2位，最后在低位（右侧）的两个空位补零。则得到的最终结果是0000 0000 0000 0000 0000 0000 0000 1100，则转换为十进制是12.数学意义： 在数字没有溢出的前提下，对于正数和负数，左移一位都相当于乘以2的1次方，左移n位就相当于乘以2的n次方。 “&gt;&gt;”运算规则：按二进制形式把所有的数字向右移动对应巍峨位数，低位移出（舍弃），高位的空位补符号位，即正数补零，负数补1.语法格式：需要移位的数字 &gt;&gt; 移位的次数 例如11 &gt;&gt; 2，则是将数字11右移2位 计算过程：11的二进制形式为：0000 0000 0000 0000 0000 0000 0000 1011，然后把低位的最后两个数字移出，因为该数字是正数，所以在高位补零。则得到的最终结果是0000 0000 0000 0000 0000 0000 0000 0010.转换为十进制是3.数学意义：右移一位相当于除2，右移n位相当于除以2的n次方。 &gt;&gt;&gt;运算规则：按二进制形式把所有的数字向右移动对应巍峨位数，低位移出（舍弃），高位的空位补零。对于正数来说和带符号右移相同，对于负数来说不同。 其他结构和&gt;&gt;相似。 ###小结： 二进制运算符，包括位运算符和移位运算符，使程序员可以在二进制基础上操作数字，可以更有效的进行运算，并且可以以二进制的形式存储和转换数据，是实现网络协议解析以及加密等算法的基础。 实例操作： 12345678910111213141516171819202122232425262728public class test &#123; public static void main(String[] args) &#123; int i = -1; i &gt;&gt;&gt;= 10; System.out.println(i); mTest(); &#125;public static void mTest() &#123; //左移 int i = 12; //二进制为:0000000000000000000000000001100 i &lt;&lt;= 2; //i左移2位，把高位的两位数字(左侧开始)抛弃,低位的空位补0,二进制码就为0000000000000000000000000110000 System.out.println(i); //二进制110000值为48； System.out.println(&quot;&lt;br&gt;&quot;); //右移 i &gt;&gt;= 2; //i右移2为，把低位的两个数字(右侧开始)抛弃,高位整数补0，负数补1，二进制码就为0000000000000000000000000001100 System.out.println(i); //二进制码为1100值为12 System.out.println(&quot;&lt;br&gt;&quot;); //右移example int j = 11;//二进制码为00000000000000000000000000001011 j &gt;&gt;= 2; //右移两位，抛弃最后两位,整数补0,二进制码为：00000000000000000000000000000010 System.out.println(j); //二进制码为10值为2 System.out.println(&quot;&lt;br&gt;&quot;); byte k = -2; //转为int,二进制码为：0000000000000000000000000000010 k &gt;&gt;= 2; //右移2位，抛弃最后2位，负数补1,二进制吗为：11000000000000000000000000000 System.out.println(j); //二进制吗为11值为2 &#125;&#125; 在Thinking in Java第三章中的一段话: 移位运算符面向的运算对象也是 二进制的“位”。 可单独用它们处理整数类型（主类型的一种）。左移位运算符（&lt;&lt;）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。 “有符号”右移位运算符（&gt;&gt;）则将运算符左边的运算对象向右移动运算符右侧指定的位数。“有符号”右移位运算符使用了“符号扩展”：若值为正，则在高位插入0；若值为负，则在高位插入1。Java也添加了一种“无符号”右移位运算符（&gt;&gt;&gt;），它使用了“零扩展”：无论正负，都在高位插入0。这一运算符是C或C++没有的。 若对char，byte或者short进行移位处理，那么在移位进行之前，它们会自动转换成一个int。只有右侧的5个低位才会用到。这样可防止我们在一个int数里移动不切实际的位数。若对一个long值进行处理，最后得到的结果也 是long。此时只会用到右侧的6个低位，防止移动超过long值里现成的位数。但在进行“无符号”右移位时，也可能遇到一个问题。若对byte或 short值进行右移位运算，得到的可能不是正确的结果（Java 1.0和Java 1.1特别突出）。它们会自动转换成int类型，并进行右移位。但“零扩展”不会发生，所以在那些情况下会得到-1的结果。]]></content>
       <categories>
-        <category>Git</category>
+        <category>Java</category>
+        <category>算法</category>
       </categories>
       <tags>
-        <tag>版本回滚</tag>
-        <tag>commit</tag>
-        <tag>Git</tag>
+        <tag>Java</tag>
+        <tag>运算符</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Android 进程间通讯方式]]></title>
-    <url>%2F2019%2F03%2F08%2FAndroid%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF%E6%96%B9%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[1、通过单向数据管道传递数据 管道(使用PipedWriter/ 创建PipedReader)是java.io包的一部分。也就是说，它们是一般的Java功能，而不是Android特定的。管道为同一进程内的两个线程提供了一种连接和建立单向数据通道的方法。生产者线程将数据写入管道，而使用者线程从管道读取数据。 2、共享内存通信 共享内存（使用编程中已知的内存区域作为堆）是在线程之间传递信息的常用方法。应用程序中的所有线程都可以访问进程中的相同地址空间。 3、实现消费者 - 生产者模式 BlockingQueue 线程信令是一种低级，高度可配置的机制，可以适应许多用例，但它也可能被认为是最容易出错的技术。因此，Java平台在线程信令机制上构建高级抽象，以解决线程之间的任意对象的单向切换。抽象通常被称为“解决生产者 - 消费者同步问题。”问题包括可能存在生成内容的线程（生产者线程）和消费内容的线程（消费者线程）的用例。生产者将消息传递给消费者进行处理。线程之间的中介是具有阻塞行为的队列，即java.util.concurrent.BlockingQueue。 4、消息队列 消息处理机制是Android平台的基础，API位于android.os包中，其中包含一组实现该功能的类Handler。 android.os.Looper与唯一的消费者线程关联的消息调度程序。 android.os.Handler消费者线程消息处理器，以及生产者线程将消息插入队列的接口。Looper可以有许多关联的处理程序，但它们都将消息插入到同一队列中。 android.os.MessageQueue要在消费者线程上处理的无限链接消息列表。每个Looper和Thread-最多只有一个MessageQueue。 android.os.Message要在使用者线程上执行的消息。 原文链接]]></content>
+    <title><![CDATA[Volatile 原理及作用]]></title>
+    <url>%2F2019%2F03%2F08%2FVolatile%20%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BD%9C%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[—— 维基百科Java也支持volatile关键字，但它被用于其他不同的用途。当volatile用于一个作用域时，Java保证如下： （适用于Java所有版本）读和写一个volatile变量有全局的排序。也就是说每个线程访问一个volatile作用域时会在继续执行之前读取它的当前值，而不是（可能）使用一个缓存的值。(但是并不保证经常读写volatile作用域时读和写的相对顺序，也就是说通常这并不是有用的线程构建)。 （适用于Java5及其之后的版本）volatile的读和写建立了一个happens-before关系，类似于申请和释放一个互斥锁[示例]。 使用volatile会比使用锁更快，但是在一些情况下它不能工作。volatile使用范围在Java5中得到了扩展，特别是双重检查锁定现在能够正确工作[示例]。 资料 1、维基百科资料 2、Java并发编程：volatile关键字解析资料 3、Java中缓存的原理]]></content>
       <categories>
-        <category>Android</category>
+        <category>Java</category>
       </categories>
       <tags>
-        <tag>进程通讯</tag>
-        <tag>线程</tag>
-        <tag>Android</tag>
+        <tag>Volatile</tag>
       </tags>
   </entry>
   <entry>
@@ -209,19 +207,6 @@
         <tag>Java</tag>
         <tag>类加载机制</tag>
         <tag>JVM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JAVA基础(JAVA移位运算符)]]></title>
-    <url>%2F2019%2F03%2F08%2FJAVA%E5%9F%BA%E7%A1%80(JAVA%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6)%2F</url>
-    <content type="text"><![CDATA[移位运算符** 就是在二进制的基础上对数字进行平移。按照平移的方向和填充数字的规则分为三种：&lt;&lt;（左移）、&gt;&gt;（带符号右移）和&gt;&gt;&gt;（无符号右移）。 在移位运算时，byte、short和char类型移位后的结果会变成int类型，对于byte、short、char和int进行移位时，规定实际移动的次数是移动次数和32的余数，也就是移位33次和移位1次得到的结果相同。移动long型的数值时，规定实际移动的次数是移动次数和64的余数，也就是移动66次和移动2次得到的结果相同。 ###三种移位运算符的移动规则和使用如下所示： “&lt;&lt;” 运算规则：按二进制形式把所有的数字向左移动对应的位数，高位移出（舍弃），低位的空位补零。语法格式 ：需要移位的数字 &lt;&lt; 移位的次数 例如： 3 &lt;&lt; 2，则是将数字3左移2位 计算过程： 3 &lt;&lt; 2 首先把3转换为二进制数字0000 0000 0000 0000 0000 0000 0000 0011，然后把该数字高位（左侧）的两个零移出，其他的数字都朝左平移2位，最后在低位（右侧）的两个空位补零。则得到的最终结果是0000 0000 0000 0000 0000 0000 0000 1100，则转换为十进制是12.数学意义： 在数字没有溢出的前提下，对于正数和负数，左移一位都相当于乘以2的1次方，左移n位就相当于乘以2的n次方。 “&gt;&gt;”运算规则：按二进制形式把所有的数字向右移动对应巍峨位数，低位移出（舍弃），高位的空位补符号位，即正数补零，负数补1.语法格式：需要移位的数字 &gt;&gt; 移位的次数 例如11 &gt;&gt; 2，则是将数字11右移2位 计算过程：11的二进制形式为：0000 0000 0000 0000 0000 0000 0000 1011，然后把低位的最后两个数字移出，因为该数字是正数，所以在高位补零。则得到的最终结果是0000 0000 0000 0000 0000 0000 0000 0010.转换为十进制是3.数学意义：右移一位相当于除2，右移n位相当于除以2的n次方。 &gt;&gt;&gt;运算规则：按二进制形式把所有的数字向右移动对应巍峨位数，低位移出（舍弃），高位的空位补零。对于正数来说和带符号右移相同，对于负数来说不同。 其他结构和&gt;&gt;相似。 ###小结： 二进制运算符，包括位运算符和移位运算符，使程序员可以在二进制基础上操作数字，可以更有效的进行运算，并且可以以二进制的形式存储和转换数据，是实现网络协议解析以及加密等算法的基础。 实例操作： 12345678910111213141516171819202122232425262728public class test &#123; public static void main(String[] args) &#123; int i = -1; i &gt;&gt;&gt;= 10; System.out.println(i); mTest(); &#125;public static void mTest() &#123; //左移 int i = 12; //二进制为:0000000000000000000000000001100 i &lt;&lt;= 2; //i左移2位，把高位的两位数字(左侧开始)抛弃,低位的空位补0,二进制码就为0000000000000000000000000110000 System.out.println(i); //二进制110000值为48； System.out.println(&quot;&lt;br&gt;&quot;); //右移 i &gt;&gt;= 2; //i右移2为，把低位的两个数字(右侧开始)抛弃,高位整数补0，负数补1，二进制码就为0000000000000000000000000001100 System.out.println(i); //二进制码为1100值为12 System.out.println(&quot;&lt;br&gt;&quot;); //右移example int j = 11;//二进制码为00000000000000000000000000001011 j &gt;&gt;= 2; //右移两位，抛弃最后两位,整数补0,二进制码为：00000000000000000000000000000010 System.out.println(j); //二进制码为10值为2 System.out.println(&quot;&lt;br&gt;&quot;); byte k = -2; //转为int,二进制码为：0000000000000000000000000000010 k &gt;&gt;= 2; //右移2位，抛弃最后2位，负数补1,二进制吗为：11000000000000000000000000000 System.out.println(j); //二进制吗为11值为2 &#125;&#125; 在Thinking in Java第三章中的一段话: 移位运算符面向的运算对象也是 二进制的“位”。 可单独用它们处理整数类型（主类型的一种）。左移位运算符（&lt;&lt;）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。 “有符号”右移位运算符（&gt;&gt;）则将运算符左边的运算对象向右移动运算符右侧指定的位数。“有符号”右移位运算符使用了“符号扩展”：若值为正，则在高位插入0；若值为负，则在高位插入1。Java也添加了一种“无符号”右移位运算符（&gt;&gt;&gt;），它使用了“零扩展”：无论正负，都在高位插入0。这一运算符是C或C++没有的。 若对char，byte或者short进行移位处理，那么在移位进行之前，它们会自动转换成一个int。只有右侧的5个低位才会用到。这样可防止我们在一个int数里移动不切实际的位数。若对一个long值进行处理，最后得到的结果也 是long。此时只会用到右侧的6个低位，防止移动超过long值里现成的位数。但在进行“无符号”右移位时，也可能遇到一个问题。若对byte或 short值进行右移位运算，得到的可能不是正确的结果（Java 1.0和Java 1.1特别突出）。它们会自动转换成int类型，并进行右移位。但“零扩展”不会发生，所以在那些情况下会得到-1的结果。]]></content>
-      <categories>
-        <category>Java</category>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>运算符</tag>
       </tags>
   </entry>
   <entry>
@@ -239,16 +224,41 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Java 二分查找算法]]></title>
-    <url>%2F2019%2F03%2F08%2FJava%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[1、二分查找又称折半查找，它是一种效率较高的查找方法。2、二分查找要求： *（1）必须采用顺序存储结构 * （2）必须按关键字大小有序排列 3、原理：将数组分为三部分，依次是中值（所谓的中值就是数组中间位置的那个值）前，中值，中值后；将要查找的值和数组的中值进行比较，若小于中值则在中值前 面找，若大于中值则在中值后面找，等于中值时直接返回。然后依次是一个递归过程，将前半部分或者后半部分继续分解为三部分。 4、实现：二分查找的实现用递归和循环两种方式5、代码123456789101112131415161718192021222324252627282930313233343536373839404142package other;public class BinarySearch &#123; /* * 循环实现二分查找算法arr 已排好序的数组x 需要查找的数-1 无法查到数据 */ public static int binarySearch(int[] arr, int x) &#123; int low = 0; int high = arr.length-1; while(low &lt;= high) &#123; int middle = (low + high)/2; if(x == arr[middle]) &#123; return middle; &#125;else if(x &lt;arr[middle]) &#123; high = middle - 1; &#125;else &#123; low = middle + 1; &#125; &#125; return -1; &#125; //递归实现二分查找 public static int binarySearch(int[] dataset,int data,int beginIndex,int endIndex)&#123; int midIndex = (beginIndex+endIndex)/2; if(data &lt;dataset[beginIndex]||data&gt;dataset[endIndex]||beginIndex&gt;endIndex)&#123; return -1; &#125; if(data &lt;dataset[midIndex])&#123; return binarySearch(dataset,data,beginIndex,midIndex-1); &#125;else if(data&gt;dataset[midIndex])&#123; return binarySearch(dataset,data,midIndex+1,endIndex); &#125;else &#123; return midIndex; &#125; &#125; public static void main(String[] args) &#123; int[] arr = &#123; 6, 12, 33, 87, 90, 97, 108, 561 &#125;; System.out.println(&quot;循环查找：&quot; + (binarySearch(arr, 87) + 1)); System.out.println(&quot;递归查找&quot;+binarySearch(arr,87,2,arr.length-1)); &#125;&#125;]]></content>
+    <title><![CDATA[Android 进程间通讯方式]]></title>
+    <url>%2F2019%2F03%2F08%2FAndroid%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[1、通过单向数据管道传递数据 管道(使用PipedWriter/ 创建PipedReader)是java.io包的一部分。也就是说，它们是一般的Java功能，而不是Android特定的。管道为同一进程内的两个线程提供了一种连接和建立单向数据通道的方法。生产者线程将数据写入管道，而使用者线程从管道读取数据。 2、共享内存通信 共享内存（使用编程中已知的内存区域作为堆）是在线程之间传递信息的常用方法。应用程序中的所有线程都可以访问进程中的相同地址空间。 3、实现消费者 - 生产者模式 BlockingQueue 线程信令是一种低级，高度可配置的机制，可以适应许多用例，但它也可能被认为是最容易出错的技术。因此，Java平台在线程信令机制上构建高级抽象，以解决线程之间的任意对象的单向切换。抽象通常被称为“解决生产者 - 消费者同步问题。”问题包括可能存在生成内容的线程（生产者线程）和消费内容的线程（消费者线程）的用例。生产者将消息传递给消费者进行处理。线程之间的中介是具有阻塞行为的队列，即java.util.concurrent.BlockingQueue。 4、消息队列 消息处理机制是Android平台的基础，API位于android.os包中，其中包含一组实现该功能的类Handler。 android.os.Looper与唯一的消费者线程关联的消息调度程序。 android.os.Handler消费者线程消息处理器，以及生产者线程将消息插入队列的接口。Looper可以有许多关联的处理程序，但它们都将消息插入到同一队列中。 android.os.MessageQueue要在消费者线程上处理的无限链接消息列表。每个Looper和Thread-最多只有一个MessageQueue。 android.os.Message要在使用者线程上执行的消息。 原文链接]]></content>
       <categories>
-        <category>Java</category>
-        <category>算法</category>
+        <category>Android</category>
       </categories>
       <tags>
-        <tag>Java</tag>
-        <tag>算法</tag>
+        <tag>Android</tag>
+        <tag>进程通讯</tag>
+        <tag>线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git如何把本地代码推送到远程仓库]]></title>
+    <url>%2F2019%2F03%2F08%2FGit%E5%A6%82%E4%BD%95%E6%8A%8A%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[1、 初始化版本库1$ git init 2、 添加文件到版本库（只是添加到缓存区），.代表添加文件夹下所有文件1$ git add . 3、 把添加的文件提交到版本库，并填写提交备注1$ git commit -m &quot;first commit&quot; 4、 把本地库与远程库关联1$ git remote add origin 远程库地址 5、 第一次推送时1$ git push -u origin master 6、第一次推送后，直接使用该命令即可推送修改1$ git push origin master]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>版本回滚</tag>
+        <tag>commit</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[单例模式]]></title>
+    <url>%2F2019%2F03%2F08%2F%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[本文摘自维基百科 单例模式，也叫单子模式，是一种常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。 —— 维基百科 实现单例模式的思路：一个类能返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）；当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用；同时我们还将该类的构造函数定义为私有方法，这样其他处的代码就无法通过调用该类的构造函数来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例。 通常单例模式在Java语言中，有两种构建方式： 懒汉方式：指全局的单例实例在第一次被使用时构建。 饿汉方式：指全局的单例实例在类装载时构建。 Java在Java语言中，单例模式(饿汉模式)应用的例子如下述代码所示： 1234567891011public class Singleton &#123; private final static Singleton INSTANCE = new Singleton(); // Private constructor suppresses private Singleton() &#123;&#125; // default public constructor public static Singleton getInstance() &#123; return INSTANCE; &#125;&#125; 在Java编程语言中，单例模式(懒汉模式)应用的例子如下述代码所示 (此种方法只能用在JDK5及以后版本(注意 INSTANCE 被声明为 volatile)，之前的版本使用“双重检查锁”会发生非预期行为[1])： 123456789101112131415161718192021public class Singleton &#123; private static volatile Singleton INSTANCE = null; // Private constructor suppresses // default public constructor private Singleton() &#123;&#125; //thread safe and performance promote public static Singleton getInstance() &#123; if(INSTANCE == null)&#123; synchronized(Singleton.class)&#123; //when more than two threads run into the first null check same time, to avoid instanced more than one time, it needs to be checked again. if(INSTANCE == null)&#123; INSTANCE = new Singleton(); &#125; &#125; &#125; return INSTANCE; &#125;&#125;]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>单利模式</tag>
       </tags>
   </entry>
 </search>

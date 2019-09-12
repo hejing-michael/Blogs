@@ -281,6 +281,279 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/05/16/微信X5之WebView使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何靖">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何靖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/16/微信X5之WebView使用/" itemprop="url">微信X5之WebView使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-16T10:17:33+08:00">
+                2019-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#<a href="https://x5.tencent.com/tbs/index.html" target="_blank" rel="noopener">微信X5之WebView</a>使用</p>
+<h2 id="X5之WebView属性配置"><a href="#X5之WebView属性配置" class="headerlink" title="X5之WebView属性配置"></a>X5之WebView属性配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">private</span> WebViewClient client = <span class="keyword">new</span> WebViewClient() &#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 防止加载网页时调起系统浏览器</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldOverrideUrlLoading</span><span class="params">(WebView view, String url)</span>   </span>&#123;</span><br><span class="line">		view.loadUrl(url);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">X5WebView</span><span class="params">(Context arg0)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>(arg0);</span><br><span class="line">	setBackgroundColor(<span class="number">85621</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SuppressLint</span>(<span class="string">"SetJavaScriptEnabled"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">X5WebView</span><span class="params">(Context arg0, AttributeSet arg1)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>(arg0, arg1);</span><br><span class="line">	<span class="keyword">this</span>.setWebViewClient(client);</span><br><span class="line">	<span class="comment">// this.setWebChromeClient(chromeClient);</span></span><br><span class="line">	<span class="comment">// WebStorage webStorage = WebStorage.getInstance();</span></span><br><span class="line">	initWebViewSettings();</span><br><span class="line">	<span class="keyword">this</span>.getView().setClickable(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWebViewSettings</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	WebSettings webSetting = <span class="keyword">this</span>.getSettings();</span><br><span class="line">	webSetting.setJavaScriptEnabled(<span class="keyword">true</span>);</span><br><span class="line">	webSetting.setJavaScriptCanOpenWindowsAutomatically(<span class="keyword">true</span>);</span><br><span class="line">	webSetting.setAllowFileAccess(<span class="keyword">true</span>);</span><br><span class="line">	webSetting.setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);</span><br><span class="line">	webSetting.setSupportZoom(<span class="keyword">true</span>);</span><br><span class="line">	webSetting.setBuiltInZoomControls(<span class="keyword">true</span>);</span><br><span class="line">	webSetting.setUseWideViewPort(<span class="keyword">true</span>);</span><br><span class="line">	webSetting.setSupportMultipleWindows(<span class="keyword">true</span>);</span><br><span class="line">	<span class="comment">// webSetting.setLoadWithOverviewMode(true);</span></span><br><span class="line">	webSetting.setAppCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">	<span class="comment">// webSetting.setDatabaseEnabled(true);</span></span><br><span class="line">	webSetting.setDomStorageEnabled(<span class="keyword">true</span>);</span><br><span class="line">	webSetting.setGeolocationEnabled(<span class="keyword">true</span>);</span><br><span class="line">	webSetting.setAppCacheMaxSize(Long.MAX_VALUE);</span><br><span class="line">	<span class="comment">// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);</span></span><br><span class="line">	webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);</span><br><span class="line">	<span class="comment">// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);</span></span><br><span class="line">	webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension</span></span><br><span class="line">	<span class="comment">// settings 的设计</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/05/16/CrossWalk之XWalkView使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何靖">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何靖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/16/CrossWalk之XWalkView使用/" itemprop="url">CrossWalk之XWalkView使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-16T09:57:38+08:00">
+                2019-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/WebView/" itemprop="url" rel="index">
+                    <span itemprop="name">WebView</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#<a href="https://download.01.org/crosswalk/releases/" target="_blank" rel="noopener">XwalkView</a>使用</p>
+<h2 id="XwalkView属性配置"><a href="#XwalkView属性配置" class="headerlink" title="XwalkView属性配置"></a>XwalkView属性配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressLint</span>(<span class="string">"SetJavaScriptEnabled"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (BuildConfig.DEBUG) &#123;</span><br><span class="line">            XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, <span class="keyword">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//声明WebSettings子类</span></span><br><span class="line">        XWalkSettings webSettings = getSettings();</span><br><span class="line">        <span class="comment">//如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript</span></span><br><span class="line">        webSettings.setJavaScriptEnabled(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">// 若加载的 html 里有JS 在执行动画等操作，会造成资源浪费（CPU、电量）</span></span><br><span class="line">        <span class="comment">// 在 onStop 和 onResume 里分别把 setJavaScriptEnabled() 给设置成 false 和 true 即可</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//支持插件</span></span><br><span class="line">        <span class="comment">//webSettings.setPluginsEnabled(true);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置自适应屏幕，两者合用</span></span><br><span class="line">        <span class="comment">//将图片调整到适合webview的大小</span></span><br><span class="line">        webSettings.setUseWideViewPort(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//缩放至屏幕的大小</span></span><br><span class="line">        webSettings.setLoadWithOverviewMode(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//缩放操作</span></span><br><span class="line">        <span class="comment">//支持缩放，默认为true。是下面那个的前提。</span></span><br><span class="line">        webSettings.setSupportZoom(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//设置内置的缩放控件。若为false，则该WebView不可缩放</span></span><br><span class="line">        webSettings.setBuiltInZoomControls(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//webSettings.setDisplayZoomControls(false); //隐藏原生的缩放控件</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//其他细节操作</span></span><br><span class="line">        <span class="comment">//关闭webview中缓存</span></span><br><span class="line">        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);</span><br><span class="line">        <span class="comment">//设置可以访问文件</span></span><br><span class="line">        webSettings.setAllowFileAccess(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//支持通过JS打开新窗口</span></span><br><span class="line">        webSettings.setJavaScriptCanOpenWindowsAutomatically(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//支持自动加载图片</span></span><br><span class="line">        webSettings.setLoadsImagesAutomatically(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置背景为白色</span></span><br><span class="line">        setBackgroundColor(Color.WHITE);</span><br><span class="line">        <span class="comment">//设置排序</span></span><br><span class="line">        setZOrderOnTop(<span class="keyword">true</span>);</span><br><span class="line">        Log.i(<span class="string">"XwalkViewWebContainer"</span>, <span class="string">"Version:"</span> + getXWalkVersion());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/05/16/Android系统WebView使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1122,314 +1395,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/22/微信小程序之文件系统初探/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="何靖">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何靖的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/22/微信小程序之文件系统初探/" itemprop="url">微信小程序之文件系统初探</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T08:41:26+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
-                    <span itemprop="name">微信小程序</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="微信小程序之文件系统初探"><a href="#微信小程序之文件系统初探" class="headerlink" title="微信小程序之文件系统初探"></a>微信小程序之文件系统初探</h2><h3 id="1、文件下载"><a href="#1、文件下载" class="headerlink" title="1、文件下载"></a>1、文件下载</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//下载文件</span></span><br><span class="line">go_download: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">var</span> baseUrl = <span class="string">"http://rwh.blob.core.chinacloudapi.cn"</span>;</span><br><span class="line">  <span class="keyword">var</span> fileName = <span class="string">"1-e2b214af930149ee80c8142d067148a7.exam"</span>;</span><br><span class="line">  <span class="keyword">var</span> url = baseUrl + <span class="string">"/data/ExamBuilder2.0/20190320"</span> + <span class="string">"/"</span> + fileName;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"dowload url:"</span> + url);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//用户缓存目录</span></span><br><span class="line">  <span class="keyword">var</span> userLocalPath = wx.env.USER_DATA_PATH;</span><br><span class="line">  <span class="keyword">var</span> localPath = <span class="string">"wxfile://"</span>;</span><br><span class="line">  <span class="keyword">var</span> path = userLocalPath + <span class="string">"/"</span> + fileName</span><br><span class="line">  <span class="keyword">var</span> localPath = localPath + <span class="string">"/"</span> + fileName</span><br><span class="line">  <span class="keyword">var</span> authorization = <span class="string">"Basic ZThlYWJmNWMwN2I0NGI0YmEzOGJmZWMyMTJkM2U1ZDU="</span>;</span><br><span class="line">  <span class="keyword">var</span> apptoken = <span class="string">"Authorization"</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> downloadTask = wx.downloadFile(&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 待下载的云资源</span></span><br><span class="line">    url: url,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//下载成功后的回调函数</span></span><br><span class="line">    success(res) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"dowload res.errMsg:"</span> + res.errMsg);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"dowload res.statusCode:"</span> + res.statusCode);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"dowload res.tempFilePath:"</span> + res.tempFilePath);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (res.statusCode === <span class="number">200</span>) &#123;</span><br><span class="line">        wx.showToast(&#123;</span><br><span class="line">          title: <span class="string">'下载成功！'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//失败回调函数</span></span><br><span class="line">    fai: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"downloadFile fai:"</span> + res.errMsg)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//完成回调函数</span></span><br><span class="line">    complete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"downloadFile complete"</span>)</span><br><span class="line">      content.getReaddir(targPath)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  downloadTask.onProgressUpdate(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'下载进度'</span>, res.progress)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'已经下载的数据长度'</span>, res.totalBytesWritten)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'预期需要下载的数据总长度'</span>, res.totalBytesExpectedToWrite)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// downloadTask.abort() // 取消下载任务</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、持久化文件到本地"><a href="#2、持久化文件到本地" class="headerlink" title="2、持久化文件到本地"></a>2、持久化文件到本地</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> //下载成功的文件目前存在temp文件夹下，它属于临时文件</span><br><span class="line"> //如果想要将其持久化，需要使用wx.saveFile()将其保存至store文件夹下，</span><br><span class="line"> //在使用这个函数时，temp文件夹下的临时文件会被删除。</span><br><span class="line">wx.saveFile(&#123;</span><br><span class="line">   tempFilePath: res.tempFilePath,</span><br><span class="line">      success: function(res) &#123;</span><br><span class="line">      console.log(res);</span><br><span class="line">      var savedFilePath = res.savedFilePath;</span><br><span class="line">      console.log(&apos;文件已下载到&apos; + savedFilePath);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、解压压缩文件"><a href="#3、解压压缩文件" class="headerlink" title="3、解压压缩文件"></a>3、解压压缩文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//解压文件</span><br><span class="line">unzipFile: function(path, targPath) &#123;</span><br><span class="line">  var content = this;</span><br><span class="line">  console.log(&quot;unzip path:&quot; + path)</span><br><span class="line">  console.log(&quot;unzip targPath:&quot; + targPath)</span><br><span class="line">  wx.getFileSystemManager().unzip(&#123;</span><br><span class="line">    //文件路径</span><br><span class="line">    zipFilePath: path,</span><br><span class="line"></span><br><span class="line">    //目标文件夹</span><br><span class="line">    targetPath: targPath,</span><br><span class="line"></span><br><span class="line">    //成功回调函数</span><br><span class="line">    success: function(res) &#123;</span><br><span class="line">      console.log(res.errMsg)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    //失败回调函数</span><br><span class="line">    fai: function(res) &#123;</span><br><span class="line">      console.log(&quot;unzip fai:&quot; + res.errMsg)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    //完成回调函数</span><br><span class="line">    complete: function() &#123;</span><br><span class="line">      console.log(&quot;unzip complete&quot;)</span><br><span class="line">      content.getReaddir(targPath)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、读取文件到内存"><a href="#3、读取文件到内存" class="headerlink" title="3、读取文件到内存"></a>3、读取文件到内存</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//读取文件</span><br><span class="line">  readFile: function(path) &#123;</span><br><span class="line">    console.log(&quot;readFile start path:&quot; + path)</span><br><span class="line">    var userLocalPath = wx.env.USER_DATA_PATH;</span><br><span class="line">    wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">      //文件路径</span><br><span class="line">      filePath: path,</span><br><span class="line"></span><br><span class="line">      //成功回调函数</span><br><span class="line">      success: function(res) &#123;</span><br><span class="line">        console.log(&quot;unzip success res:&quot; + res.errMsg)</span><br><span class="line">        console.log(res)</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      //失败回调函数</span><br><span class="line">      fai: function(res) &#123;</span><br><span class="line">        console.log(&quot;unzip fai:&quot; + res.errMsg)</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      //完成回调函数</span><br><span class="line">      complete: function() &#123;</span><br><span class="line">        console.log(&quot;unzip complete&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、查看目标文件夹的文件列表"><a href="#4、查看目标文件夹的文件列表" class="headerlink" title="4、查看目标文件夹的文件列表"></a>4、查看目标文件夹的文件列表</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查看下载的文件列表</span></span><br><span class="line"> getReaddir: <span class="function"><span class="keyword">function</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"getReaddir start"</span>)</span><br><span class="line">   wx.getFileSystemManager().readdir(&#123;</span><br><span class="line">     dirPath: path,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//成功回调函数</span></span><br><span class="line">     success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getReaddir success res:"</span> + res.errMsg)</span><br><span class="line">       <span class="built_in">console</span>.log(res)</span><br><span class="line">     &#125;,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//失败回调函数</span></span><br><span class="line">     fai: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getReaddir fai:"</span> + res.errMsg)</span><br><span class="line">     &#125;,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//完成回调函数</span></span><br><span class="line">     complete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getReaddir complete"</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、查看已经缓存的文件列表"><a href="#5、查看已经缓存的文件列表" class="headerlink" title="5、查看已经缓存的文件列表"></a>5、查看已经缓存的文件列表</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查看下载的文件列表</span></span><br><span class="line"> getUserSavedFileList: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"getUserSavedFileList start"</span>)</span><br><span class="line">   wx.getFileSystemManager().getSavedFileList(&#123;</span><br><span class="line">     <span class="comment">//成功回调函数</span></span><br><span class="line">     success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getUserSavedFileList success res:"</span> + res)</span><br><span class="line">       <span class="built_in">console</span>.log(res)</span><br><span class="line">     &#125;,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//失败回调函数</span></span><br><span class="line">     fai: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getUserSavedFileList fai:"</span> + res.errMsg)</span><br><span class="line">     &#125;,</span><br><span class="line"></span><br><span class="line">     <span class="comment">//完成回调函数</span></span><br><span class="line">     complete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"getUserSavedFileList complete"</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/14/责任链模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="何靖">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何靖的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/14/责任链模式/" itemprop="url">责任链模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-14T16:23:21+08:00">
-                2019-03-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h2><p><strong>责任链模式：</strong>责任链模式在面向对象程式设计里是一种软件设计模式，它包含了一些命令对象和一系列的处理对象。每一个处理对象决定它能处理哪些命令对象，它也知道如何将它不能处理的命令对象传递给该链中的下一个处理对象。该模式还描述了往该处理链的末尾添加新的处理对象的方法。—维基百科</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> ERR = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> NOTICE = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> DEBUG = <span class="number">7</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mask;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// The next element in the chain of responsibility</span></span><br><span class="line">    <span class="keyword">protected</span> Logger next;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Logger <span class="title">setNext</span><span class="params">( Logger l)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        next = l;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">message</span><span class="params">( String msg, <span class="keyword">int</span> priority )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( priority &lt;= mask ) </span><br><span class="line">        &#123;</span><br><span class="line">            writeMessage( msg );</span><br><span class="line">            <span class="keyword">if</span> ( next != <span class="keyword">null</span> )</span><br><span class="line">            &#123;</span><br><span class="line">                next.message( msg, priority );</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">writeMessage</span><span class="params">( String msg )</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StdoutLogger</span> <span class="keyword">extends</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StdoutLogger</span><span class="params">( <span class="keyword">int</span> mask )</span> </span>&#123; <span class="keyword">this</span>.mask = mask; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">writeMessage</span><span class="params">( String msg )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println( <span class="string">"Writting to stdout: "</span> + msg );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmailLogger</span> <span class="keyword">extends</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">EmailLogger</span><span class="params">( <span class="keyword">int</span> mask )</span> </span>&#123; <span class="keyword">this</span>.mask = mask; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">writeMessage</span><span class="params">( String msg )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println( <span class="string">"Sending via email: "</span> + msg );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StderrLogger</span> <span class="keyword">extends</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StderrLogger</span><span class="params">( <span class="keyword">int</span> mask )</span> </span>&#123; <span class="keyword">this</span>.mask = mask; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">writeMessage</span><span class="params">( String msg )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println( <span class="string">"Sending to stderr: "</span> + msg );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChainOfResponsibilityExample</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String[] args )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// Build the chain of responsibility</span></span><br><span class="line">        Logger l = <span class="keyword">new</span> StdoutLogger( Logger.DEBUG).setNext(</span><br><span class="line">                            <span class="keyword">new</span> EmailLogger( Logger.NOTICE ).setNext(</span><br><span class="line">                            <span class="keyword">new</span> StderrLogger( Logger.ERR ) ) );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Handled by StdoutLogger</span></span><br><span class="line">        l.message( <span class="string">"Entering function y."</span>, Logger.DEBUG );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Handled by StdoutLogger and EmailLogger</span></span><br><span class="line">        l.message( <span class="string">"Step1 completed."</span>, Logger.NOTICE );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Handled by all three loggers</span></span><br><span class="line">        l.message( <span class="string">"An error has occurred."</span>, Logger.ERR );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1477,7 +1447,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

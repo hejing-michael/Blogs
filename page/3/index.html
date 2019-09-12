@@ -887,7 +887,7 @@ $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Git如何把本地代码推送到远程仓库/">
+    <link itemprop="mainEntityOfPage" href="https://michael.org.cn/2019/03/08/Android 进程间通讯方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="何靖">
@@ -906,7 +906,7 @@ $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/08/Git如何把本地代码推送到远程仓库/" itemprop="url">Git如何把本地代码推送到远程仓库</a></h1>
+                <a class="post-title-link" href="/2019/03/08/Android 进程间通讯方式/" itemprop="url">Android 进程间通讯方式</a></h1>
         
 
         <div class="post-meta">
@@ -941,8 +941,8 @@ $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -980,17 +980,32 @@ $git reset --hard commit-id  退到/进到指定commit</code></pre><h3 id="强�
       
         
           
-            <h5 id="1、-初始化版本库"><a href="#1、-初始化版本库" class="headerlink" title="1、 初始化版本库"></a>1、 初始化版本库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+            <h4 id="1、通过单向数据管道传递数据"><a href="#1、通过单向数据管道传递数据" class="headerlink" title="1、通过单向数据管道传递数据"></a>1、通过单向数据管道传递数据</h4><blockquote>
+<p>管道(使用PipedWriter/ 创建PipedReader)是java.io包的一部分。也就是说，它们是一般的Java功能，而不是Android特定的。管道为同一进程内的两个线程提供了一种连接和建立单向数据通道的方法。生产者线程将数据写入管道，而使用者线程从管道读取数据。</p>
+</blockquote>
+<h4 id="2、共享内存通信"><a href="#2、共享内存通信" class="headerlink" title="2、共享内存通信"></a>2、共享内存通信</h4><blockquote>
+<p>共享内存（使用编程中已知的内存区域作为堆）是在线程之间传递信息的常用方法。应用程序中的所有线程都可以访问进程中的相同地址空间。</p>
+</blockquote>
+<h4 id="3、实现消费者-生产者模式-BlockingQueue"><a href="#3、实现消费者-生产者模式-BlockingQueue" class="headerlink" title="3、实现消费者 - 生产者模式 BlockingQueue"></a>3、实现消费者 - 生产者模式 BlockingQueue</h4><blockquote>
+<p>线程信令是一种低级，高度可配置的机制，可以适应许多用例，但它也可能被认为是最容易出错的技术。因此，Java平台在线程信令机制上构建高级抽象，以解决线程之间的任意对象的单向切换。抽象通常被称为“解决生产者 - 消费者同步问题。”问题包括可能存在生成内容的线程（生产者线程）和消费内容的线程（消费者线程）的用例。生产者将消息传递给消费者进行处理。线程之间的中介是具有阻塞行为的队列，即java.util.concurrent.BlockingQueue。</p>
+</blockquote>
+<h4 id="4、消息队列"><a href="#4、消息队列" class="headerlink" title="4、消息队列"></a>4、消息队列</h4><blockquote>
+<p>消息处理机制是Android平台的基础，API位于android.os包中，其中包含一组实现该功能的类Handler。</p>
+</blockquote>
+<blockquote>
+<p>android.os.Looper<br>与唯一的消费者线程关联的消息调度程序。</p>
+</blockquote>
+<blockquote>
+<p>android.os.Handler<br>消费者线程消息处理器，以及生产者线程将消息插入队列的接口。Looper可以有许多关联的处理程序，但它们都将消息插入到同一队列中。</p>
+</blockquote>
+<blockquote>
+<p>android.os.MessageQueue<br>要在消费者线程上处理的无限链接消息列表。每个Looper和Thread-最多只有一个MessageQueue。</p>
+</blockquote>
+<blockquote>
+<p>android.os.Message<br>要在使用者线程上执行的消息。</p>
+</blockquote>
+<p><a href="https://www.oreilly.com/library/view/efficient-android-threading/9781449364120/ch04.html" target="_blank" rel="noopener">原文链接</a></p>
 
-<h5 id="2、-添加文件到版本库（只是添加到缓存区），-代表添加文件夹下所有文件"><a href="#2、-添加文件到版本库（只是添加到缓存区），-代表添加文件夹下所有文件" class="headerlink" title="2、 添加文件到版本库（只是添加到缓存区），.代表添加文件夹下所有文件"></a>2、 添加文件到版本库（只是添加到缓存区），.代表添加文件夹下所有文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
-
-<h5 id="3、-把添加的文件提交到版本库，并填写提交备注"><a href="#3、-把添加的文件提交到版本库，并填写提交备注" class="headerlink" title="3、 把添加的文件提交到版本库，并填写提交备注"></a>3、 把添加的文件提交到版本库，并填写提交备注</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;first commit&quot;</span><br></pre></td></tr></table></figure>
-
-<h5 id="4、-把本地库与远程库关联"><a href="#4、-把本地库与远程库关联" class="headerlink" title="4、 把本地库与远程库关联"></a>4、 把本地库与远程库关联</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin 远程库地址</span><br></pre></td></tr></table></figure>
-
-<h5 id="5、-第一次推送时"><a href="#5、-第一次推送时" class="headerlink" title="5、 第一次推送时"></a>5、 第一次推送时</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<h5 id="6、第一次推送后，直接使用该命令即可推送修改"><a href="#6、第一次推送后，直接使用该命令即可推送修改" class="headerlink" title="6、第一次推送后，直接使用该命令即可推送修改"></a>6、第一次推送后，直接使用该命令即可推送修改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
           
         
       

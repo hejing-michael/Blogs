@@ -122,9 +122,9 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>进程通讯</tag>
         <tag>线程</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -181,19 +181,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[类加载机制之验证]]></title>
-    <url>%2F2019%2F03%2F08%2F%E7%BB%AB%E8%AF%B2%E5%A7%9E%E6%9D%9E%E8%8A%A5%E6%BA%80%E9%8D%92%E6%9C%B5%E7%AE%A3%E6%A5%A0%E5%B2%83%E7%98%89%2F</url>
-    <content type="text"><![CDATA[原文链接：https://blog.csdn.net/ns_code/article/details/17881581 目的验证的目的是为了确保Class文件中的字节流包含的信息符合当前虚拟机的要求，而且不会危害虚拟机自身的安全。 目标不同的虚拟机对类验证的实现可能会有所不同，但大致都会完成以下四个阶段的验证：文件格式的验证、元数据的验证、字节码验证和符号引用验证。 文件格式的验证：验证字节流是否符合Class文件格式的规范，并且能被当前版本的虚拟机处理，该验证的主要目的是保证输入的字节流能正确地解析并存储于方法区之内。经过该阶段的验证后，字节流才会进入内存的方法区中进行存储，后面的三个验证都是基于方法区的存储结构进行的。 元数据验证：对类的元数据信息进行语义校验（其实就是对类中的各数据类型进行语法校验），保证不存在不符合Java语法规范的元数据信息。 字节码验证：该阶段验证的主要工作是进行数据流和控制流分析，对类的方法体进行校验分析，以保证被校验的类的方法在运行时不会做出危害虚拟机安全的行为。 符号引用验证：这是最后一个阶段的验证，它发生在虚拟机将符号引用转化为直接引用的时候（解析阶段中发生该转化，后面会有讲解），主要是对类自身以外的信息（常量池中的各种符号引用）进行匹配性的校验。]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>类加载机制</tag>
-        <tag>JVM</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[多线程`同步`有几种方式]]></title>
     <url>%2F2019%2F03%2F08%2F%E6%BE%B6%E6%B0%B1%E5%9A%8E%E7%BB%8B%E5%AC%AA%E6%82%93%E5%A7%9D%E3%83%A6%E6%B9%81%E9%8D%91%E7%8A%B5%EE%9D%92%E9%8F%82%E7%91%B0%E7%B4%A1%2F</url>
     <content type="text"><![CDATA[1、使用synchronized（可同步代码片段也可同步整个函数） synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。即有synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。 代码如: 12public synchronized void test()&#123; &#125; 注： synchronized关键字也可以修饰静态方法，此时如果调用该静态方法，将会锁住整个类 synchronized同步代码块即有synchronized关键字修饰的语句块。被该关键字修饰的语句块会自动被加上内置锁，从而实现同步 代码如： 12synchronized(object)&#123; &#125; 注：同步是一种高开销的操作，因此应该尽量减少同步的内容。通常没有必要同步整个方法，使用synchronized代码块同步关键代码即可。 2、使用重入锁实现线程同步在JavaSE5.0中新增了一个java.util.concurrent包来支持同步。ReentrantLock类是可重入、互斥、实现了Lock接口的锁，它与使用synchronized方法和快具有相同的基本行为和语义，并且扩展了其能力。ReenreantLock类的常用方法有： ReentrantLock() : 创建一个ReentrantLock实例 lock() : 获得锁 *unlock() *: 释放锁123456789101112131415161718class Bank &#123; private int account = 100; //需要声明这个锁 private Lock lock = new ReentrantLock(); public int getAccount() &#123; return account; &#125; //这里不再需要synchronized public void save(int money) &#123; lock.lock(); try&#123; account += money; &#125;finally&#123; lock.unlock(); &#125; &#125; ｝ 注：关于Lock对象和synchronized关键字的选择：a.最好两个都不用，使用一种java.util.concurrent包提供的机制，能够帮助用户处理所有与锁相关的代码。b.如果synchronized关键字能满足用户的需求，就用synchronized，因为它能简化代码c.如果需要更高级的功能，就用ReentrantLock类，此时要注意及时释放锁，否则会出现死锁，通常在finally代码释放锁]]></content>
@@ -205,6 +192,19 @@
         <tag>Java</tag>
         <tag>多线程</tag>
         <tag>同步</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[类加载机制之验证]]></title>
+    <url>%2F2019%2F03%2F08%2F%E7%BB%AB%E8%AF%B2%E5%A7%9E%E6%9D%9E%E8%8A%A5%E6%BA%80%E9%8D%92%E6%9C%B5%E7%AE%A3%E6%A5%A0%E5%B2%83%E7%98%89%2F</url>
+    <content type="text"><![CDATA[原文链接：https://blog.csdn.net/ns_code/article/details/17881581 目的验证的目的是为了确保Class文件中的字节流包含的信息符合当前虚拟机的要求，而且不会危害虚拟机自身的安全。 目标不同的虚拟机对类验证的实现可能会有所不同，但大致都会完成以下四个阶段的验证：文件格式的验证、元数据的验证、字节码验证和符号引用验证。 文件格式的验证：验证字节流是否符合Class文件格式的规范，并且能被当前版本的虚拟机处理，该验证的主要目的是保证输入的字节流能正确地解析并存储于方法区之内。经过该阶段的验证后，字节流才会进入内存的方法区中进行存储，后面的三个验证都是基于方法区的存储结构进行的。 元数据验证：对类的元数据信息进行语义校验（其实就是对类中的各数据类型进行语法校验），保证不存在不符合Java语法规范的元数据信息。 字节码验证：该阶段验证的主要工作是进行数据流和控制流分析，对类的方法体进行校验分析，以保证被校验的类的方法在运行时不会做出危害虚拟机安全的行为。 符号引用验证：这是最后一个阶段的验证，它发生在虚拟机将符号引用转化为直接引用的时候（解析阶段中发生该转化，后面会有讲解），主要是对类自身以外的信息（常量池中的各种符号引用）进行匹配性的校验。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>类加载机制</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
